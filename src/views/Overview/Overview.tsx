@@ -321,7 +321,7 @@ const Overview = () => {
                     <p className="font-semibold text-black flex items-center gap-1">
                         {' '}
                         <span>
-                            <TbTag />
+                            <TbTag size={20} />
                         </span>{' '}
                         Label
                     </p>
@@ -334,7 +334,7 @@ const Overview = () => {
                     <p className="font-semibold text-black flex items-center gap-1">
                         {' '}
                         <span>
-                            <TbCircle />
+                            <TbCircle size={20} />
                         </span>{' '}
                         Stage
                     </p>
@@ -348,7 +348,7 @@ const Overview = () => {
                     <p className="font-semibold text-black flex items-center gap-1">
                         {' '}
                         <span>
-                            <TbUser />
+                            <TbUser size={20} />
                         </span>{' '}
                         Assigned to
                     </p>
@@ -361,7 +361,7 @@ const Overview = () => {
                     <p className="font-semibold text-black flex items-center gap-1">
                         {' '}
                         <span>
-                            <TbClock />
+                            <TbClock size={20} />
                         </span>{' '}
                         Due date
                     </p>
