@@ -29,13 +29,13 @@ export type AccountField = {
     accountVerified?: boolean
 }
 
-export type CustomerFormSchema = OverviewFields &
+export type LeadsFormSchema = OverviewFields &
     AddressFields &
     ProfileImageFields &
     TagsFields &
     AccountField
 
 export type FormSectionBaseProps = {
-    control: Control<CustomerFormSchema>
-    errors: FieldErrors<CustomerFormSchema>
+    control: Control<LeadsFormSchema>
+    errors: FieldErrors<LeadsFormSchema>
 }

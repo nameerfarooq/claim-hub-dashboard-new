@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { Form } from '@/components/ui/Form'
+import { Form, FormItem } from '@/components/ui/Form'
 import Container from '@/components/shared/Container'
 import BottomStickyBar from '@/components/template/BottomStickyBar'
 import OverviewSection from './OverviewSection'
@@ -13,16 +13,16 @@ import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import type { ZodType } from 'zod'
 import type { CommonProps } from '@/@types/common'
-import type { CustomerFormSchema } from './types'
-import { Button } from '@/components/ui'
+import type { LeadsFormSchema } from './types'
+import { Button, Card, Input } from '@/components/ui'
 
-type CustomerFormProps = {
-    onFormSubmit: (values: CustomerFormSchema) => void
-    defaultValues?: CustomerFormSchema
-    newCustomer?: boolean
+type LeadsFormProps = {
+    onFormSubmit: (values: LeadsFormSchema) => void
+    defaultValues?: LeadsFormSchema
+    newLeads?: boolean
 } & CommonProps
 
-const validationSchema: ZodType<CustomerFormSchema> = z.object({
+const validationSchema: ZodType<LeadsFormSchema> = z.object({
     firstName: z.string().min(1, { message: 'First name required' }),
     lastName: z.string().min(1, { message: 'Last name required' }),
     email: z
@@ -41,11 +41,11 @@ const validationSchema: ZodType<CustomerFormSchema> = z.object({
     tags: z.array(z.object({ value: z.string(), label: z.string() })),
 })
 
-const CustomerForm = (props: CustomerFormProps) => {
+const LeadsForm = (props: LeadsFormProps) => {
     const {
         onFormSubmit,
         defaultValues = {},
-        newCustomer = false,
+        newLeads = false,
         children,
     } = props
 
@@ -54,7 +54,7 @@ const CustomerForm = (props: CustomerFormProps) => {
         reset,
         formState: { errors },
         control,
-    } = useForm<CustomerFormSchema>({
+    } = useForm<LeadsFormSchema>({
         defaultValues: {
             ...{
                 banAccount: false,
@@ -72,7 +72,7 @@ const CustomerForm = (props: CustomerFormProps) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [JSON.stringify(defaultValues)])
 
-    const onSubmit = (values: CustomerFormSchema) => {
+    const onSubmit = (values: LeadsFormSchema) => {
         onFormSubmit?.(values)
     }
 
@@ -94,10 +94,15 @@ const CustomerForm = (props: CustomerFormProps) => {
                             errors={errors}
                         />
                         <TagsSection control={control} errors={errors} />
-                        <Button variant="solid">Update password</Button>
                         {/* {!newCustomer && (
                             <AccountSection control={control} errors={errors} />
                         )} */}
+                        <Button variant="solid">Update password</Button>
+                        <Card>
+                            <FormItem label="Add Comments">
+                                <Input placeholder="comments" />
+                            </FormItem>
+                        </Card>
                     </div>
                 </div>
             </Container>
@@ -106,4 +111,4 @@ const CustomerForm = (props: CustomerFormProps) => {
     )
 }
 
-export default CustomerForm
+export default LeadsForm

@@ -12,6 +12,7 @@ import EditPencilIcon from '@/assets/icons/EditPencil'
 import ViewEyeIcon from '@/assets/icons/ViewEye'
 import { MdDeleteOutline } from 'react-icons/md'
 import { CSVLink } from 'react-csv'
+import { useNavigate } from 'react-router-dom'
 
 type CheckBoxChangeEvent = ChangeEvent<HTMLInputElement>
 
@@ -285,14 +286,14 @@ const Leads = () => {
         },
     ]
 
+    const nav = useNavigate()
     const handleView = (rowData: any) => {
-        console.log('View:', rowData)
-        // Add logic
+        nav('/leads-details', { state: { item: rowData } })
     }
 
     const handleEdit = (rowData: any) => {
         console.log('Edit:', rowData)
-        // Add logic
+        nav('/leads-edit', { state: { item: rowData } })
     }
 
     const handleDelete = (rowData: any) => {
@@ -314,7 +315,10 @@ const Leads = () => {
                             Download
                         </Button>
                     </CSVLink>
-                    <button className="flex items-center gap-2 border border-primary rounded-xl px-4 py-2 text-sm font-bold text-white bg-primary hover:bg-primary-deep">
+                    <button
+                        onClick={() => nav('/leads-create')}
+                        className="flex items-center gap-2 border border-primary rounded-xl px-4 py-2 text-sm font-bold text-white bg-primary hover:bg-primary-deep"
+                    >
                         <span>
                             <AddUserIcon />
                         </span>

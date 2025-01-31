@@ -4,7 +4,7 @@ import { ConfirmDialog, Container } from '@/components/shared'
 import { Button, Notification, toast } from '@/components/ui'
 import { TbArrowNarrowLeft, TbTrash } from 'react-icons/tb'
 import sleep from '@/utils/sleep'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 const Main = () => {
     const [deleteConfirmationOpen, setDeleteConfirmationOpen] = useState(false)

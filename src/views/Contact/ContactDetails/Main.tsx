@@ -121,11 +121,12 @@ const Main = () => {
                 <div className="w-full p-4">
                     <h5>Claims</h5>
                     <div className="grid grid-flow-col gap-2">
-                        {item.claim.map((i, index) => (
-                            <div key={index} className="pt-4">
-                                <Tag>{i}</Tag>
-                            </div>
-                        ))}
+                        {item.claim &&
+                            item.claim.map((i, index) => (
+                                <div key={index} className="pt-4">
+                                    <Tag>{i}</Tag>
+                                </div>
+                            ))}
                     </div>
                 </div>
                 <div className="w-full grid grid-flow-col gap-4 p-4">

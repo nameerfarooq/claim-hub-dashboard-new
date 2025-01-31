@@ -7,15 +7,17 @@ import type { FormSectionBaseProps } from './types'
 type TagsSectionProps = FormSectionBaseProps
 
 const defaultOptions = [
-    { value: 'C-102', label: 'C-102' },
-    { value: 'C-104', label: 'C-104' },
-    { value: 'C-103', label: 'C-103' },
+    { value: 'Water', label: 'Water' },
+    { value: 'Fire', label: 'Fire' },
+    { value: 'Mold', label: 'Mold' },
+    { value: 'Storm', label: 'Storm' },
+    { value: 'Inquiry', label: 'Inquiry' },
 ]
 
 const TagsSection = ({ control }: TagsSectionProps) => {
     return (
         <Card>
-            <h4 className="mb-2">Contact Tags</h4>
+            <h4 className="mb-2">Lead Type</h4>
             <div className="mt-6">
                 <Controller
                     name="tags"
@@ -24,7 +26,7 @@ const TagsSection = ({ control }: TagsSectionProps) => {
                         <Select
                             isMulti
                             isClearable
-                            placeholder="Add tags"
+                            placeholder="Types"
                             componentAs={CreatableSelect}
                             options={defaultOptions}
                             onChange={(option) => field.onChange(option)}

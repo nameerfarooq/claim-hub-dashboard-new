@@ -43,6 +43,24 @@ export const protectedRoutes: Routes = [
         authority: [],
     },
     {
+        key: 'leadsDetails',
+        path: '/leads-details',
+        component: lazy(() => import('@/views/Leads/LeadsDetails/Main')),
+        authority: [],
+    },
+    {
+        key: 'leadsEdit',
+        path: '/leads-edit',
+        component: lazy(() => import('@/views/Leads/LeadsEdit/Main')),
+        authority: [],
+    },
+    {
+        key: 'leadsNew',
+        path: '/leads-create',
+        component: lazy(() => import('@/views/Leads/LeadsNew/Main')),
+        authority: [],
+    },
+    {
         key: 'claims.sales',
         path: '/sales',
         component: lazy(() => import('@/views/Claim/Sales')),

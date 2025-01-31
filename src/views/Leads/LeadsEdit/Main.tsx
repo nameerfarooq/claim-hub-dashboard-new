@@ -26,20 +26,20 @@ const Main = () => {
 
     const getDefaultValues = () => {
         if (item) {
-            const { name, city, email, number, claim } = item
+            const { name, city, email, phone, type } = item
 
             return {
                 firstName: name.fullName,
                 lastName: '',
                 email: email,
                 img: name.media,
-                phoneNumber: number,
+                phoneNumber: phone,
                 dialCode: 'US',
                 country: 'US',
                 address: '',
                 city: city,
                 postcode: 75100,
-                tags: [claim],
+                tags: type,
             }
         }
 
@@ -52,7 +52,7 @@ const Main = () => {
             <Notification type="success">Customer deleted!</Notification>,
             { placement: 'top-center' },
         )
-        nav('/contact')
+        nav('/leads')
     }
 
     const handleDelete = () => {
