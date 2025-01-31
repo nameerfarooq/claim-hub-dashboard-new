@@ -174,5 +174,11 @@ export const protectedRoutes: Routes = [
         component: lazy(() => import('@/views/Calendar/Main')),
         authority: [],
     },
+    {
+        key: 'photos',
+        path: '/photos',
+        component: lazy(() => import('@/views/Photos')),
+        authority: [],
+    },
     ...othersRoute,
 ]

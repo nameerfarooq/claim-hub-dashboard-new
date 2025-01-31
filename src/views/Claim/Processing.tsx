@@ -1,4 +1,4 @@
-import { Button, Tooltip } from '@/components/ui'
+import { Button, Tag, Tooltip } from '@/components/ui'
 import React from 'react'
 import { TbCloudDownload, TbDots } from 'react-icons/tb'
 import user from '@/assets/Images/user.png'
@@ -42,153 +42,213 @@ const Processing = () => {
     const tableData = [
         {
             id: 1,
+            claimId: 'C-1001',
             name: {
                 media: user,
-                fullName: 'Angelina Gotelli',
+                fullName: 'John Smith',
             },
-            city: 'New York',
-            phone: '(618) 474-9169',
-            source: 'Lorem',
-            category: 'Residential',
-            type: 'Repair',
-            insurance: 'Lorem',
-            priority: 'High',
-            lastTouched: '12/12/24 - 01:25:49', // Placeholder for action
+            type: ['Water', 'Hurricane'],
+            city: 'Miami',
+            status: 'In Progress',
+            stage: 'Processing',
+            subStage: 'Scheduling',
+            lastUpdated: '2024-06-25',
+            pa: 'Michael Torres',
         },
         {
             id: 2,
+            claimId: 'C-1002',
             name: {
                 media: user,
-                fullName: 'Michael Thompson',
+                fullName: 'Linda Garcia',
             },
-            city: 'Los Angeles',
-            phone: '(310) 555-0123',
-            source: 'Ipsum',
-            category: 'Commercial',
-            type: 'Maintenance',
-            insurance: 'Ipsum',
-            priority: 'Medium',
-            lastTouched: '11/11/24 - 02:15:30',
+            type: ['Hurricane'],
+            city: 'Fort Lauderdale',
+            status: 'Closed',
+            stage: 'Processing',
+            subStage: 'Intake',
+            lastUpdated: '2024-06-22',
+            pa: 'Sophia Rivera',
         },
         {
             id: 3,
+            claimId: 'C-1003',
             name: {
                 media: user,
-                fullName: 'Sophia Williams',
+                fullName: 'Mark Johnson',
             },
-            city: 'Chicago',
-            phone: '(312) 555-4567',
-            source: 'Dolor',
-            category: 'Residential',
-            type: 'Installation',
-            insurance: 'Dolor',
-            priority: 'Low',
-            lastTouched: '10/10/24 - 03:45:12',
+            type: ['Storm'],
+            city: 'Boca Raton',
+            status: 'In Progress',
+            stage: 'Processing',
+            subStage: 'Intake',
+            lastUpdated: '2024-06-27',
+            pa: 'Michael Torres',
         },
         {
             id: 4,
+            claimId: 'C-1004',
             name: {
                 media: user,
-                fullName: 'David Johnson',
+                fullName: 'Susan Lee',
             },
-            city: 'Houston',
-            phone: '(713) 555-6789',
-            source: 'Sit',
-            category: 'Commercial',
-            type: 'Repair',
-            insurance: 'Sit',
-            priority: 'High',
-            lastTouched: '09/09/24 - 04:30:45',
+            type: ['Water', 'Hurricane'],
+            city: 'Orlando',
+            status: 'In Progress',
+            stage: 'Processing',
+            subStage: 'Scheduling',
+            lastUpdated: '2024-06-28',
+            pa: 'David Martinez',
         },
         {
             id: 5,
+            claimId: 'C-1005',
             name: {
                 media: user,
-                fullName: 'Emily Davis',
+                fullName: 'James Brown',
             },
-            city: 'San Francisco',
-            phone: '(415) 555-0987',
-            source: 'Amet',
-            category: 'Residential',
-            type: 'Maintenance',
-            insurance: 'Amet',
-            priority: 'Medium',
-            lastTouched: '08/08/24 - 05:20:10',
+            type: ['Fire'],
+            city: 'West Palm Beach',
+            status: 'In Progress',
+            stage: 'Processing',
+            subStage: 'Scheduling',
+            lastUpdated: '2024-06-29',
+            pa: 'Sophia Rivera',
         },
         {
             id: 6,
+            claimId: 'C-1006',
             name: {
                 media: user,
-                fullName: 'Ethan Moore',
+                fullName: 'Robert White',
             },
-            city: 'Seattle',
-            phone: '(206) 555-2468',
-            source: 'Consectetur',
-            category: 'Commercial',
-            type: 'Installation',
-            insurance: 'Consectetur',
-            priority: 'Low',
-            lastTouched: '07/07/24 - 06:15:25',
+            type: ['Water', 'Hurricane'],
+            city: 'Miami',
+            status: 'In Progress',
+            stage: 'Processing',
+            subStage: 'Scheduling',
+            lastUpdated: '2024-07-01',
+            pa: 'David Martinez',
         },
         {
             id: 7,
+            claimId: 'C-1007',
             name: {
                 media: user,
-                fullName: 'Charlotte Brown',
+                fullName: 'Amanda Scott',
             },
-            city: 'Denver',
-            phone: '(303) 555-7891',
-            source: 'Adipiscing',
-            category: 'Residential',
-            type: 'Repair',
-            insurance: 'Adipiscing',
-            priority: 'High',
-            lastTouched: '06/06/24 - 07:45:00',
+            type: ['Storm'],
+            city: 'Fort Lauderdale',
+            status: 'Hold',
+            stage: 'Processing',
+            subStage: 'Scheduling',
+            lastUpdated: '2024-06-30',
+            pa: 'Michael Torres',
         },
         {
             id: 8,
+            claimId: 'C-1008',
             name: {
                 media: user,
-                fullName: 'Oliver Martinez',
+                fullName: 'David Wilson',
             },
-            city: 'Miami',
-            phone: '(305) 555-3412',
-            source: 'Elit',
-            category: 'Commercial',
-            type: 'Maintenance',
-            insurance: 'Elit',
-            priority: 'Medium',
-            lastTouched: '05/05/24 - 08:00:18',
+            type: ['Mold'],
+            city: 'Boca Raton',
+            status: 'In Progress',
+            stage: 'Processing',
+            subStage: 'Intake',
+            lastUpdated: '2024-07-02',
+            pa: 'Sophia Rivera',
         },
         {
             id: 9,
+            claimId: 'C-1009',
             name: {
                 media: user,
-                fullName: 'Amelia Harris',
+                fullName: 'Emma Johnson',
             },
-            city: 'Austin',
-            phone: '(512) 555-6678',
-            source: 'Sed',
-            category: 'Residential',
-            type: 'Installation',
-            insurance: 'Sed',
-            priority: 'Low',
-            lastTouched: '04/04/24 - 09:25:35',
+            type: ['Water', 'Hurricane'],
+            city: 'Orlando',
+            status: 'In Progress',
+            stage: 'Processing',
+            subStage: 'Intake',
+            lastUpdated: '2024-07-03',
+            pa: 'David Martinez',
         },
         {
             id: 10,
+            claimId: 'C-1010',
             name: {
                 media: user,
-                fullName: 'James Wilson',
+                fullName: 'Ethan Miller',
             },
-            city: 'Dallas',
-            phone: '(972) 555-1234',
-            source: 'Do',
-            category: 'Commercial',
-            type: 'Repair',
-            insurance: 'Do',
-            priority: 'High',
-            lastTouched: '03/03/24 - 10:10:00',
+            type: ['Hurricane'],
+            city: 'Miami',
+            status: 'Follow-Up',
+            stage: 'Processing',
+            subStage: 'Scheduling',
+            lastUpdated: '2024-07-01',
+            pa: 'Sophia Rivera',
+        },
+        {
+            id: 11,
+            claimId: 'C-1011',
+            name: {
+                media: user,
+                fullName: 'Lucas Carter',
+            },
+            type: ['Storm'],
+            city: 'West Palm Beach',
+            status: 'In Progress',
+            stage: 'Processing',
+            subStage: 'Scheduling',
+            lastUpdated: '2024-07-02',
+            pa: 'Michael Torres',
+        },
+        {
+            id: 12,
+            claimId: 'C-1012',
+            name: {
+                media: user,
+                fullName: 'Olivia Davis',
+            },
+            type: ['Fire'],
+            city: 'Fort Lauderdale',
+            status: 'In Progress',
+            stage: 'Processing',
+            subStage: 'Scheduling',
+            lastUpdated: '2024-07-04',
+            pa: 'David Martinez',
+        },
+        {
+            id: 13,
+            claimId: 'C-1013',
+            name: {
+                media: user,
+                fullName: 'Henry Wilson',
+            },
+            type: ['Fire'],
+            city: 'Boca Raton',
+            status: 'Follow-Up',
+            stage: 'Processing Out',
+            subStage: 'Scheduling',
+            lastUpdated: '2024-07-05',
+            pa: 'Sophia Rivera',
+        },
+        {
+            id: 14,
+            claimId: 'C-1014',
+            name: {
+                media: user,
+                fullName: 'Isabella Brown',
+            },
+            type: ['Fire'],
+            city: 'Miami',
+            status: 'Closed',
+            stage: 'Processing Out',
+            subStage: 'Intake',
+            lastUpdated: '2024-07-06',
+            pa: 'Michael Torres',
         },
     ]
 
@@ -218,18 +278,51 @@ const Processing = () => {
             ),
         },
         {
-            header: 'Name',
+            header: 'Claim ID',
+            accessorKey: 'claimId',
+        },
+        {
+            header: 'Customer Name',
             accessorKey: 'name',
             cell: ({ row }) => (
-                <div className="flex items-center gap-2">
+                <button className="flex items-center gap-2">
                     <img
                         src={row.original.name.media}
                         alt={row.original.name.fullName}
                         className="w-8 h-8 rounded-full"
                     />
-                    <span className="font-semibold">
+                    <span className="text-black font-semibold">
                         {row.original.name.fullName}
                     </span>
+                </button>
+            ),
+        },
+        {
+            header: 'Type',
+            accessorKey: 'type',
+            enableSorting: true,
+            cell: ({ row }) => (
+                <div className="flex items-center gap-1">
+                    {row.original.type.map((item, index) => (
+                        <Tag
+                            key={index}
+                            className={` ${
+                                item === 'Water'
+                                    ? 'bg-sky-100'
+                                    : item === 'Hurricane'
+                                      ? 'bg-red-100'
+                                      : item === 'Fire'
+                                        ? 'bg-red-100'
+                                        : item === 'Mold'
+                                          ? 'bg-green-100'
+                                          : item === 'Storm'
+                                            ? 'bg-sky-100'
+                                            : ''
+                            }`}
+                        >
+                            {item}
+                        </Tag>
+                    ))}
                 </div>
             ),
         },
@@ -239,53 +332,31 @@ const Processing = () => {
             enableSorting: true,
         },
         {
-            header: 'Phone',
-            accessorKey: 'phone',
+            header: 'Status',
+            accessorKey: 'status',
             enableSorting: true,
         },
         {
-            header: 'Source',
-            accessorKey: 'source',
+            header: 'Stage',
+            accessorKey: 'stage',
             enableSorting: true,
         },
         {
-            header: 'Category',
-            accessorKey: 'category',
+            header: 'Sub-Stage',
+            accessorKey: 'subStage',
             enableSorting: true,
         },
         {
-            header: 'Type',
-            accessorKey: 'type',
+            header: 'Last Updated',
+            accessorKey: 'lastUpdated',
             enableSorting: true,
         },
+
         {
-            header: 'Insurance',
-            accessorKey: 'insurance',
+            header: 'Assigned PA',
+            accessorKey: 'pa',
             enableSorting: true,
-        },
-        {
-            header: 'Priority',
-            accessorKey: 'priority',
-            enableSorting: true,
-            cell: ({ row }) => (
-                <p
-                    className={`rounded-xl w-fit px-2 py-1 ${
-                        row.original.priority === 'High'
-                            ? 'bg-red-300'
-                            : row.original.priority === 'Medium'
-                              ? 'bg-primary-light'
-                              : 'bg-success-light'
-                    }`}
-                >
-                    {' '}
-                    {row.original.priority}{' '}
-                </p>
-            ),
-        },
-        {
-            header: 'Last Touched',
-            accessorKey: 'lastTouched',
-            enableSorting: true,
+            cell: ({ row }) => <button>{row.original.pa}</button>,
         },
         {
             header: 'Actions',

@@ -11,6 +11,7 @@ import AddUserIcon from '@/assets/icons/AddUser'
 import EditPencilIcon from '@/assets/icons/EditPencil'
 import ViewEyeIcon from '@/assets/icons/ViewEye'
 import { MdDeleteOutline } from 'react-icons/md'
+import { useNavigate } from 'react-router-dom'
 
 type CheckBoxChangeEvent = ChangeEvent<HTMLInputElement>
 
@@ -151,7 +152,14 @@ const Equipment = () => {
             accessorKey: 'name',
             enableSorting: true,
             cell: ({ row }) => (
-                <span className="font-semibold">{row.original.name}</span>
+                <span
+                    onClick={() => {
+                        handleEdit(row.original)
+                    }}
+                    className="cursor-pointer font-semibold"
+                >
+                    {row.original.name}
+                </span>
             ),
         },
         {
@@ -229,19 +237,23 @@ const Equipment = () => {
         },
     ]
 
+    const nav = useNavigate()
+
     const handleView = (rowData: any) => {
-        console.log('View:', rowData)
-        // Add logic
+        nav('/contact-details', { state: { item: rowData } })
     }
 
     const handleEdit = (rowData: any) => {
-        console.log('Edit:', rowData)
-        // Add logic
+        nav('/contact-edit', { state: { item: rowData } })
     }
 
     const handleDelete = (rowData: any) => {
         console.log('Delete:', rowData)
         // Add logic
+    }
+
+    const handleNew = () => {
+        nav('/contact-create')
     }
 
     return (
@@ -252,7 +264,10 @@ const Equipment = () => {
                     <Button variant="default" icon={<TbCloudDownload />}>
                         Download
                     </Button>
-                    <button className="flex items-center gap-2 border border-primary rounded-xl px-4 py-2 text-sm font-bold text-white bg-primary hover:bg-primary-deep">
+                    <button
+                        onClick={() => handleNew()}
+                        className="flex items-center gap-2 border border-primary rounded-xl px-4 py-2 text-sm font-bold text-white bg-primary hover:bg-primary-deep"
+                    >
                         <span>
                             <AddUserIcon />
                         </span>

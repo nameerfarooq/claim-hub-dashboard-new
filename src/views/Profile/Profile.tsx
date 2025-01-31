@@ -27,6 +27,7 @@ import Td from '@/components/ui/Table/Td'
 import visa from '@/assets/Images/visa.png'
 import debit from '@/assets/Images/debit.png'
 import { TbPlus } from 'react-icons/tb'
+import { useNavigate } from 'react-router-dom'
 
 type Option = {
     value: string
@@ -147,6 +148,8 @@ const Main = () => {
             amt: 39.9,
         },
     ]
+
+    const nav = useNavigate()
     return (
         <Container>
             <Card>
@@ -292,7 +295,10 @@ const Main = () => {
                                                 </p>
                                             </div>
                                         </div>
-                                        <Button variant="solid">
+                                        <Button
+                                            onClick={() => nav('/pricing')}
+                                            variant="solid"
+                                        >
                                             Change plan
                                         </Button>
                                     </div>

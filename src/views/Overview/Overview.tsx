@@ -6,7 +6,6 @@ import {
     Tag,
     Calendar,
     Timeline,
-    Steps,
     Tabs,
     Dropdown,
     Tooltip,
@@ -189,81 +188,153 @@ const Overview = () => {
             date: '9-20-2023',
             tooltipData: [
                 {
-                    icon: <TbCheck />,
+                    icon: <TbCheck size={20} className="text-green-500" />,
                     value: 'Qualification',
                 },
+                {
+                    icon: <TbCheck size={20} className="text-green-500" />,
+                    value: 'Close',
+                },
             ],
-            title: 'Lead',
+            title: 'Sales',
             completed: true,
             description: '3 Days',
             icon: <CiUser size={24} className="text-white" />,
         },
         {
-            timeSpan: '3 Days',
+            timeSpan: '26 Days',
             date: '9-20-2023',
             tooltipData: [
                 {
-                    icon: <TbCheck />,
-                    value: 'Qualification',
+                    icon: <TbCheck size={20} className="text-green-500" />,
+                    value: 'Intake',
+                },
+                {
+                    icon: <TbCheck size={20} className="text-green-500" />,
+                    value: 'Scheduling',
                 },
             ],
-            title: 'Scheduling',
+            title: 'Processing',
             completed: true,
             description: '26 Days',
             icon: <TbClock size={24} className="text-white" />,
         },
         {
-            timeSpan: '3 Days',
+            timeSpan: '8 Months',
             date: '9-20-2023',
             tooltipData: [
                 {
-                    icon: <TbCheck />,
-                    value: 'Qualification',
+                    icon: <TbCheck size={20} className="text-green-500" />,
+                    value: 'Prep',
+                },
+                {
+                    icon: <TbCheck size={20} className="text-green-500" />,
+                    value: 'Perform',
+                },
+                {
+                    icon: <TbCheck size={20} className="text-green-500" />,
+                    value: 'Compliance',
                 },
             ],
-            title: 'Assessment',
+            title: 'Job',
             completed: false,
             description: '8 Months',
             icon: <BiListCheck size={24} />, // Use IN_PROGRESS instead of 'in_progress'
         },
         {
-            timeSpan: '3 Days',
+            // timeSpan: '3 Days',
             date: '9-20-2023',
             tooltipData: [
                 {
-                    icon: <TbCheck />,
-                    value: 'Qualification',
+                    icon: <TbCheck size={20} className="text-green-500" />,
+                    value: 'Calculate Internal Labor',
+                },
+                {
+                    icon: <TbCheck size={20} className="text-green-500" />,
+                    value: 'Calculate Material',
+                },
+                {
+                    icon: <TbCheck size={20} className="text-green-500" />,
+                    value: 'Collect Deposit',
+                },
+                {
+                    icon: <TbCheck size={20} className="text-green-500" />,
+                    value: 'Collect Balance',
+                },
+                {
+                    icon: <TbCheck size={20} className="text-green-500" />,
+                    value: 'Invoice Received (30 days)',
+                },
+                {
+                    icon: <TbCheck size={20} className="text-green-500" />,
+                    value: 'Update sent (60 days)',
+                },
+                {
+                    icon: <TbCheck size={20} className="text-green-500" />,
+                    value: 'Coverage Requested',
+                },
+                {
+                    icon: <TbCheck size={20} className="text-green-500" />,
+                    value: 'Public Adjuster Compliance',
+                },
+                {
+                    icon: <TbCheck size={20} className="text-green-500" />,
+                    value: 'Inspection',
+                },
+                {
+                    icon: <TbCheck size={20} className="text-green-500" />,
+                    value: 'Desk Adjuster Assigned',
                 },
             ],
-            title: 'Determination',
+            title: 'Accounting',
             completed: false,
             description: '9-20-2023',
             icon: <HiOutlineDocumentSearch size={24} />, // Use PENDING instead of 'pending'
         },
         {
-            timeSpan: '3 Days',
+            // timeSpan: '3 Days',
             date: '9-20-2023',
             tooltipData: [
                 {
-                    icon: <TbCheck />,
-                    value: 'Qualification',
+                    icon: <TbCheck size={20} className="text-green-500" />,
+                    value: 'Mediation',
+                },
+                {
+                    icon: <TbCheck size={20} className="text-green-500" />,
+                    value: 'Payment Processed',
                 },
             ],
-            title: 'Litigation',
+            title: 'Negotiations',
             completed: false,
             description: '9-23-2023',
             icon: <CgSpinner size={24} />,
         },
         {
-            timeSpan: '3 Days',
+            // timeSpan: '3 Days',
             date: '9-20-2023',
             tooltipData: [
                 {
-                    icon: <TbCheck />,
-                    value: 'Qualification',
+                    icon: <TbCheck size={20} className="text-green-500" />,
+                    value: 'Commission Report',
+                },
+                {
+                    icon: <TbCheck size={20} className="text-green-500" />,
+                    value: 'Call client for feedback',
+                },
+                {
+                    icon: <TbCheck size={20} className="text-green-500" />,
+                    value: 'Review received',
+                },
+                {
+                    icon: <TbCheck size={20} className="text-green-500" />,
+                    value: 'Call client for Recommendation',
+                },
+                {
+                    icon: <TbCheck size={20} className="text-green-500" />,
+                    value: 'Recommendation received ',
                 },
             ],
-            title: 'Settlement',
+            title: 'Close Out',
             completed: false,
             description: '10-19-2023',
             icon: <MdOutlineTask size={24} />,
@@ -536,7 +607,7 @@ const Overview = () => {
             <section className="flex flex-col gap-[10px]">
                 <p className="text-xl font-bold">Milestones</p>
                 <div className="w-full py-[10px]">
-                    <Steps current={2}>
+                    {/* <Steps current={2}>
                         {stepsData.map((step, index) => (
                             <Steps.Item
                                 key={index}
@@ -544,18 +615,53 @@ const Overview = () => {
                                 customIcon={step.icon}
                             />
                         ))}
-                    </Steps>
-                    {/* <div className="w-full border p-2 flex flex-row justify-between">
+                    </Steps> */}
+                    <div className="w-full p-2 flex flex-row justify-between">
                         {stepsData.map((step, index) => (
-                            <Tooltip key={index}>
-                                <div
-                                    className={`h-10 w-10 rounded-full flex items-center justify-center ${step.completed ? 'bg-primary text-white' : 'bg-primary-subtle text-black'} `}
-                                >
-                                    {step.icon}
+                            <Tooltip
+                                title={
+                                    <div>
+                                        {step.tooltipData.map(
+                                            (data, dataIndex) => (
+                                                <div
+                                                    className="flex flex-row items-center"
+                                                    key={dataIndex}
+                                                >
+                                                    <span className={'mr-1'}>
+                                                        {data.icon}
+                                                    </span>
+                                                    <p className="text-white font-semibold">
+                                                        {data.value}
+                                                    </p>
+                                                </div>
+                                            ),
+                                        )}
+                                    </div>
+                                }
+                                className="!bg-[#262626]"
+                                key={index}
+                            >
+                                <div className="flex flex-col items-center justify-center relative">
+                                    <div
+                                        className={`h-10 w-10 rounded-full flex items-center justify-center ${step.completed ? 'bg-primary text-white' : 'bg-primary-subtle text-black'} `}
+                                    >
+                                        {step.icon}
+                                    </div>
+                                    <p className="text-center font-bold pt-1">
+                                        {step.title}
+                                    </p>
+                                    <p className="text-center text-[12px] pt-1">
+                                        {step.date}
+                                    </p>
+                                    {step.timeSpan && (
+                                        <p className="text-center font-bold absolute top-0 right-[-100%]">
+                                            {step.timeSpan}
+                                        </p>
+                                    )}
                                 </div>
                             </Tooltip>
                         ))}
-                    </div> */}
+                    </div>
                 </div>
                 <div className="w-full mx-auto flex flex-row items-center justify-center mt-2">
                     <button className="py-2 px-3 rounded-lg text-lg font-bold bg-primary-mild text-white">
