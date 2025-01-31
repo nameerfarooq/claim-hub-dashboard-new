@@ -3,7 +3,7 @@ import TabContent from '@/components/ui/Tabs/TabContent'
 import TabList from '@/components/ui/Tabs/TabList'
 import TabNav from '@/components/ui/Tabs/TabNav'
 import Tabs from '@/components/ui/Tabs/Tabs'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Overview from './Overview'
 import Tasks from '../Tasks/Main'
 import Communication from './Communication'
@@ -20,8 +20,15 @@ import {
     TbMail,
 } from 'react-icons/tb'
 import { GoImage } from 'react-icons/go'
+import { useThemeStore } from '@/store/themeStore'
 
 const Main = () => {
+    const { setSideNavCollapse } = useThemeStore((state) => state);
+    useEffect(() => {
+        setSideNavCollapse(true);
+      }, [setSideNavCollapse]);
+
+
     const [currentTab, setCurrentTab] = useState('overview')
     const scheduleData = [
         {

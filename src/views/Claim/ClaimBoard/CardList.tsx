@@ -5,11 +5,12 @@ import type { Ticket } from './types'
 
 interface CardListProps {
     tasks: Ticket[]
+    columnId: string
 }
 
-const CardList: React.FC<CardListProps> = ({ tasks }) => {
+const CardList: React.FC<CardListProps> = ({ tasks, columnId }) => {
     return (
-        <Droppable droppableId="card-list" direction="vertical">
+        <Droppable droppableId={columnId} type="TASK" direction="vertical">
             {(provided) => (
                 <div
                     ref={provided.innerRef}
