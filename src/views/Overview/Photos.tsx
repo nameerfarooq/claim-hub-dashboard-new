@@ -81,6 +81,26 @@ const Photos = () => {
         console.log('Dropdown Clicked', e)
     }
 
+    const [file, setFile] = useState<File | null>(null)
+    const [isCardVisible, setIsCardVisible] = useState(false)
+
+    const handleFileUpload = (files: File[]) => {
+        if (files.length > 0) {
+            setFile(files[0])
+        }
+    }
+
+    const handleSubmit = () => {
+        if (file) {
+            console.log('Submitting file:', file.name)
+
+            setFile(null)
+            setIsCardVisible(false)
+        } else {
+            setIsCardVisible(!isCardVisible)
+        }
+    }
+
     return (
         <main className="flex flex-col gap-[30px]">
             <div className="flex flex-row items-center justify-between">
@@ -116,40 +136,53 @@ const Photos = () => {
                     </Segment>
                 </div>
             </div>
-            <Card
-                footer={{
-                    content: 'some text',
-                    className: 'bg-gray-100 text-gray-100 rounded-b-2xl',
-                    bordered: true,
-                }}
-            >
-                <div className="mb-4">
-                    <Upload>
-                        <button className="p-3 bg-primary-mild text-white flex flex-row items-center rounded-xl gap-[10px] font-bold">
-                            <HiOutlineCloudUpload size={20} />
-                            Upload your file
-                        </button>
-                    </Upload>
-                </div>
-                <div>
-                    <Upload draggable>
-                        <div className="my-16 text-center">
-                            <div className="text-6xl mb-4 flex justify-center">
-                                <UploadGradient />
-                            </div>
-                            <p className="font-semibold">
-                                <span className="text-gray-800 dark:text-white">
-                                    Drop your image here, or{' '}
-                                </span>
-                                <span className="text-blue-500">browse</span>
-                            </p>
-                            <p className="mt-1 opacity-60 dark:text-white">
-                                Support: jpeg, png, gif
-                            </p>
+            <div>
+                {isCardVisible && (
+                    <Card
+                        footer={{
+                            content: 'some text',
+                            className:
+                                'bg-gray-100 text-gray-100 rounded-b-2xl',
+                            bordered: true,
+                        }}
+                    >
+                        <div className="mb-4">
+                            <Upload onChange={handleFileUpload}>
+                                <button className="p-3 bg-primary-mild text-white flex flex-row items-center rounded-xl gap-[10px] font-bold">
+                                    <HiOutlineCloudUpload size={20} />
+                                    Upload your file
+                                </button>
+                            </Upload>
                         </div>
-                    </Upload>
+                        <div>
+                            <Upload draggable onChange={handleFileUpload}>
+                                <div className="my-16 text-center">
+                                    <div className="text-6xl mb-4 flex justify-center">
+                                        <UploadGradient />
+                                    </div>
+                                    <p className="font-semibold">
+                                        <span className="text-gray-800 dark:text-white">
+                                            Drop your image here, or{' '}
+                                        </span>
+                                        <span className="text-blue-500">
+                                            browse
+                                        </span>
+                                    </p>
+                                    <p className="mt-1 opacity-60 dark:text-white">
+                                        Support: jpeg, png, gif
+                                    </p>
+                                </div>
+                            </Upload>
+                        </div>
+                    </Card>
+                )}
+
+                <div className="w-fit mt-4">
+                    <Button variant="solid" onClick={handleSubmit}>
+                        Submit Files
+                    </Button>
                 </div>
-            </Card>
+            </div>
             <div className="relative">
                 <Button className="absolute right-0 top-0" variant="solid">
                     Add New Category

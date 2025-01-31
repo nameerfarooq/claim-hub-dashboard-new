@@ -21,6 +21,7 @@ const progressBarStatusClass = (progression: number) => {
 
 const TooltipContent = (props: TooltipContentProps) => {
     const { task } = props
+    console.log('task', task)
 
     return (
         <div className="p-3 rounded-lg shadow bg-gray-800 dark:bg-black  flex justify-between items-center min-w-[200px] z-10">
@@ -28,7 +29,7 @@ const TooltipContent = (props: TooltipContentProps) => {
                 <div className="text-white font-bold mb-1">{task.name}</div>
                 <div className="flex items-center gap-1 text-gray-300">
                     <TbClock className="text-lg" />
-                    <span>
+                    <span className="text-white">
                         {dayjs(task.start).format('DD')} ~{' '}
                         {dayjs(task.end).format('DD MMM')}
                     </span>
@@ -50,6 +51,9 @@ const TooltipContent = (props: TooltipContentProps) => {
                         />
                     )}
                 </div>
+                <p>
+                    <span></span>
+                </p>
             </div>
         </div>
     )

@@ -248,7 +248,7 @@ const Scheduler = ({ data = [] }: ScheduleProps) => {
                             </Button>
                         </div>
                     </Dialog>
-                    <Segment
+                    {/* <Segment
                         className="bg-white border"
                         value={activeValue}
                         onChange={(value) => setActiveValue(value as string)}
@@ -277,9 +277,9 @@ const Scheduler = ({ data = [] }: ScheduleProps) => {
                         >
                             Day
                         </Segment.Item>
-                    </Segment>
+                    </Segment> */}
 
-                    <Segment>
+                    {/* <Segment>
                         <Segment.Item
                             value="left"
                             onClick={() => handleArrowClick('left')}
@@ -292,7 +292,7 @@ const Scheduler = ({ data = [] }: ScheduleProps) => {
                         >
                             <MdOutlineKeyboardArrowRight />
                         </Segment.Item>
-                    </Segment>
+                    </Segment> */}
                 </div>
             </div>
             <Card>

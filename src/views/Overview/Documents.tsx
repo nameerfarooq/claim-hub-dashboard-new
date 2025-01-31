@@ -160,6 +160,26 @@ const Documents = () => {
         console.log('Dropdown Clicked', e)
     }
 
+    const [file, setFile] = useState<File | null>(null)
+    const [isCardVisible, setIsCardVisible] = useState(false)
+
+    const handleFileUpload = (files: File[]) => {
+        if (files.length > 0) {
+            setFile(files[0])
+        }
+    }
+
+    const handleSubmit = () => {
+        if (file) {
+            console.log('Submitting file:', file.name)
+
+            setFile(null)
+            setIsCardVisible(false)
+        } else {
+            setIsCardVisible(!isCardVisible)
+        }
+    }
+
     return (
         <main className="flex flex-col gap-[30px]">
             <div className="flex flex-row items-center justify-between">
@@ -195,49 +215,59 @@ const Documents = () => {
                     </Segment>
                 </div>
             </div>
-            <Card
-                footer={{
-                    content: (
-                        <div className="flex flex-row w-fit ml-auto">
-                            <button className="px-2 py-1 text-black">
-                                <RiFileCopy2Line size={16} />
-                            </button>
-                            <button className="px-2 py-1 text-black">
-                                <IoCodeSlash size={16} />
-                            </button>
+            <div>
+                {isCardVisible && (
+                    <Card
+                        footer={{
+                            content: (
+                                <div className="flex flex-row w-fit ml-auto">
+                                    <button className="px-2 py-1 text-black">
+                                        <RiFileCopy2Line size={16} />
+                                    </button>
+                                    <button className="px-2 py-1 text-black">
+                                        <IoCodeSlash size={16} />
+                                    </button>
+                                </div>
+                            ),
+                        }}
+                    >
+                        <div className="mb-4">
+                            <Upload onChange={handleFileUpload}>
+                                <button className="p-3 bg-primary-mild text-white flex flex-row items-center rounded-xl gap-[10px] font-bold">
+                                    <HiOutlineCloudUpload size={20} />
+                                    Upload your Docs
+                                </button>
+                            </Upload>
                         </div>
-                    ),
-                    className: 'bg-gray-100 flex items-end  rounded-b-2xl',
-                    bordered: true,
-                }}
-            >
-                <div className="mb-4">
-                    <Upload>
-                        <button className="p-3 bg-primary-mild text-white flex flex-row items-center rounded-xl gap-[10px] font-bold">
-                            <HiOutlineCloudUpload size={20} />
-                            Upload your Documents
-                        </button>
-                    </Upload>
-                </div>
-                <div>
-                    <Upload draggable>
-                        <div className="my-16 text-center">
-                            <div className="text-6xl mb-4 flex justify-center">
-                                <UploadPhoto />
-                            </div>
-                            <p className="font-semibold">
-                                <span className="text-gray-800 dark:text-white">
-                                    Drop your file here, or{' '}
-                                </span>
-                                <span className="text-blue-500">browse</span>
-                            </p>
-                            <p className="mt-1 opacity-60 dark:text-white">
-                                Support: pdf, xlsx, csv
-                            </p>
+                        <div>
+                            <Upload draggable onChange={handleFileUpload}>
+                                <div className="my-16 text-center">
+                                    <div className="text-6xl mb-4 flex justify-center">
+                                        <UploadGradient />
+                                    </div>
+                                    <p className="font-semibold">
+                                        <span className="text-gray-800 dark:text-white">
+                                            Drop your image here, or{' '}
+                                        </span>
+                                        <span className="text-blue-500">
+                                            browse
+                                        </span>
+                                    </p>
+                                    <p className="mt-1 opacity-60 dark:text-white">
+                                        Support: jpeg, png, gif
+                                    </p>
+                                </div>
+                            </Upload>
                         </div>
-                    </Upload>
+                    </Card>
+                )}
+
+                <div className="w-fit mt-4">
+                    <Button variant="solid" onClick={handleSubmit}>
+                        Submit Docs
+                    </Button>
                 </div>
-            </Card>
+            </div>
             <div className="">
                 <div className="w-fit ml-auto">
                     <Button className="" variant="solid">

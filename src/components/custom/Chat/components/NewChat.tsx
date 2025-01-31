@@ -9,9 +9,11 @@ import { apiGetContacts } from '@/services/ChatService'
 import { TbSearch, TbCheck } from 'react-icons/tb'
 import useSWRMutation from 'swr/mutation'
 import type { GetContactsResponse, UserDetails } from '../types'
+import { MockData } from './MockData'
 
 async function getContacts() {
     const data = await apiGetContacts<GetContactsResponse>()
+    console.log(data)
     return data
 }
 
@@ -20,17 +22,26 @@ const NewChat = () => {
     const [selectedContact, setSelectedContact] = useState<UserDetails[]>([])
     const [query, setQuery] = useState('')
 
-    const { data, trigger: fetchContacts } = useSWRMutation(
-        `/api/contacts/`,
-        getContacts,
-    )
+    // const { data, trigger: fetchContacts } = useSWRMutation(
+    //     `/api/contacts/`,
+    //     getContacts,
+    // )
 
-    useEffect(() => {
-        if (contactListDialog) {
-            fetchContacts()
-        }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [contactListDialog])
+    // useEffect(() => {
+    //     if (contactListDialog) {
+    //         fetchContacts()
+    //     }
+    //     // eslint-disable-next-line react-hooks/exhaustive-deps
+    // }, [contactListDialog])
+
+    const data = useMemo(() => {
+        return MockData.map((contact) => ({
+            id: contact.id,
+            name: contact.name,
+            email: `${contact.name.replace(/\s+/g, '').toLowerCase()}@example.com`, // Mock email
+            img: contact.avatar, // Use the avatar from mock data
+        }))
+    }, [])
 
     const contacts = useMemo(() => {
         if (data) {

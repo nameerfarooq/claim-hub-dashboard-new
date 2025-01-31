@@ -10,6 +10,7 @@ import {
     Tabs,
     Dropdown,
     Tooltip,
+    DatePicker,
 } from '@/components/ui'
 import React, { useState } from 'react'
 import { IoMdAdd, IoMdMenu } from 'react-icons/io'
@@ -38,7 +39,8 @@ import { CgSpinner } from 'react-icons/cg'
 import { MdOutlineTask } from 'react-icons/md'
 import { GoImage } from 'react-icons/go'
 import PillIcon from '@/assets/icons/PillIcon'
-import { IoPersonCircleSharp } from 'react-icons/io5'
+import mediaImg from '@/assets/Images/dashboard.png'
+import { useNavigate } from 'react-router-dom'
 
 const Overview = () => {
     const tasks = [
@@ -285,6 +287,50 @@ const Overview = () => {
         },
     ]
 
+    const [selectedTags, setSelectedTags] = useState<string[]>(['Fire', 'Mold'])
+
+    const handleToggleTag = (tag: string) => {
+        if (selectedTags.includes(tag)) {
+            setSelectedTags(selectedTags.filter((t) => t !== tag)) // Remove if already selected
+        } else {
+            setSelectedTags([...selectedTags, tag]) // Add if not selected
+        }
+    }
+
+    const tags = [
+        { id: 1, title: 'Fire' },
+        { id: 2, title: 'Water' },
+        { id: 3, title: 'Mold' },
+        { id: 4, title: 'Tornado' },
+    ]
+
+    const [selectedStages, setSelectedStages] = useState<string[]>([
+        'Scheduling',
+    ])
+
+    const [selectedDate, setSelectedDate] = useState(new Date())
+
+    const formatDate = (date) => {
+        return new Intl.DateTimeFormat('en-GB', {
+            day: 'numeric',
+            month: 'long',
+        }).format(date)
+    }
+
+    const handleToggleStage = (stage: string) => {
+        if (selectedStages.includes(stage)) {
+            setSelectedStages(selectedStages.filter((t) => t !== stage)) // Remove if already selected
+        } else {
+            setSelectedStages([...selectedStages, stage]) // Add if not selected
+        }
+    }
+
+    const stages = [
+        { id: 1, title: 'Scheduling' },
+        { id: 2, title: 'Assessment' },
+        { id: 3, title: 'Processing' },
+    ]
+
     const [currentTab, setCurrentTab] = useState('comments')
 
     const Toggle = (
@@ -295,6 +341,47 @@ const Overview = () => {
             Claim Menu
         </button>
     )
+
+    const nav = useNavigate()
+
+    const userInfo = {
+        city: 'Miami',
+        createDate: '2024-06-27',
+        email: 'john.smith@email.com',
+        id: 1,
+        lastTouched: '2024-06-28',
+        name: {
+            media: '/src/assets/Images/user.png',
+            fullName: 'John Smith',
+        },
+        pa: 'None',
+        phone: '(305) 555-7890',
+        policyNum: 'FL-123456',
+        provider: 'State Farm',
+        source: 'Google Ads',
+        status: 'New',
+        type: 'Water',
+    }
+
+    const handleLeads = (item) => {
+        nav('/leads-edit', { state: { item } })
+    }
+    const handleContact = (item) => {
+        nav('/contact-edit', { state: { item } })
+    }
+
+    const attachmentContent = [
+        {
+            media: mediaImg,
+            name: 'equipment.png',
+            size: '1.5 MB',
+        },
+        {
+            media: mediaImg,
+            name: 'group.jpg',
+            size: '1.5 MB',
+        },
+    ]
 
     return (
         <main className="flex flex-col gap-[40px]">
@@ -316,7 +403,7 @@ const Overview = () => {
                     <Dropdown.Item>Settings</Dropdown.Item>
                 </Dropdown>
             </section>
-            <section className="flex flex-row justify-between items-center">
+            <section className="grid grid-cols-4 justify-between">
                 <div className="flex flex-row items-center gap-4">
                     <p className="font-semibold text-black flex items-center gap-1">
                         {' '}
@@ -325,10 +412,45 @@ const Overview = () => {
                         </span>{' '}
                         Label
                     </p>
-                    <div className="gap-1 flex flex-row">
+                    {/* <div className="gap-1 flex flex-row">
                         <Tag className="bg-red-300 w-fit">Water</Tag>
                         <Tag className="bg-primary-subtle w-fit">Hurricane</Tag>
-                    </div>
+                    </div> */}
+                    <Dropdown
+                        className="w-full h-full"
+                        toggleClassName="hover:bg-gray-100 dark:hover:bg-gray-700 flex px-3 focus:bg-gray-100 cursor-pointer rounded-xl min-h-[46px] w-full"
+                        placement="bottom-start"
+                        renderTitle={
+                            <div className="inline-flex items-center gap-1">
+                                {selectedTags.map((tag) => (
+                                    <Tag
+                                        key={tag}
+                                        className={`${tag === 'Fire' ? 'bg-red-100' : tag === 'Water' ? 'bg-blue-100' : tag === 'Mold' ? 'bg-green-100' : 'bg-sky-100'}`}
+                                    >
+                                        {tag}
+                                    </Tag>
+                                ))}
+                            </div>
+                        }
+                    >
+                        {tags.map((tag) => (
+                            <Dropdown.Item
+                                key={tag.id}
+                                onClick={() => handleToggleTag(tag.title)}
+                                className="flex items-center justify-start w-full"
+                            >
+                                <div className="w-2/12">
+                                    {selectedTags.includes(tag.title) && (
+                                        <TbCheck
+                                            size={20}
+                                            className="text-green-500"
+                                        />
+                                    )}
+                                </div>
+                                {tag.title}
+                            </Dropdown.Item>
+                        ))}
+                    </Dropdown>
                 </div>
                 <div className="flex flex-row items-center gap-4">
                     <p className="font-semibold text-black flex items-center gap-1">
@@ -338,11 +460,41 @@ const Overview = () => {
                         </span>{' '}
                         Stage
                     </p>
-                    <div className="gap-1 flex flex-row">
-                        <Tag className="bg-success-subtle w-fit">
-                            Scheduling
-                        </Tag>
-                    </div>
+                    <Dropdown
+                        className="w-full h-full"
+                        toggleClassName="hover:bg-gray-100 dark:hover:bg-gray-700 flex px-3 focus:bg-gray-100 cursor-pointer rounded-xl min-h-[46px] w-full"
+                        placement="bottom-start"
+                        renderTitle={
+                            <div className="inline-flex items-center gap-1">
+                                {selectedStages.map((stage) => (
+                                    <Tag
+                                        key={stage}
+                                        className={`${stage === 'Assessment' ? 'bg-red-100' : stage === 'Scheduling ' ? 'bg-blue-100' : stage === 'Processing' ? 'bg-green-100' : 'bg-sky-100'}`}
+                                    >
+                                        {stage}
+                                    </Tag>
+                                ))}
+                            </div>
+                        }
+                    >
+                        {stages.map((stage) => (
+                            <Dropdown.Item
+                                key={stage.id}
+                                onClick={() => handleToggleStage(stage.title)}
+                                className="flex items-center justify-start w-full"
+                            >
+                                <div className="w-2/12">
+                                    {selectedStages.includes(stage.title) && (
+                                        <TbCheck
+                                            size={20}
+                                            className="text-green-500"
+                                        />
+                                    )}
+                                </div>
+                                {stage.title}
+                            </Dropdown.Item>
+                        ))}
+                    </Dropdown>
                 </div>
                 <div className="flex flex-row items-center gap-4">
                     <p className="font-semibold text-black flex items-center gap-1">
@@ -358,15 +510,26 @@ const Overview = () => {
                     </div>
                 </div>
                 <div className="flex flex-row items-center gap-4">
-                    <p className="font-semibold text-black flex items-center gap-1">
+                    <p className="font-semibold text-black flex items-center gap-1 text-nowrap">
                         {' '}
                         <span>
                             <TbClock size={20} />
                         </span>{' '}
                         Due date
                     </p>
-                    <div className="gap-1 flex flex-row">
-                        <p className="w-fit font-semibold">March 24</p>
+                    <div className="flex items-center gap-1 px-3 rounded-xl hover:bg-gray-200 dark:hover:bg-gray-700 focus:bg-gray-200 dark:focus:bg-gray-700 cursor-pointer w-full min-h-[46px] relative">
+                        <span className="font-semibold">
+                            {formatDate(selectedDate)}
+                        </span>
+                        <DatePicker
+                            className="opacity-0 cursor-pointer absolute"
+                            value={selectedDate}
+                            inputtable={false}
+                            inputPrefix={null}
+                            inputSuffix={null}
+                            clearable={false}
+                            onChange={(date) => setSelectedDate(date)}
+                        />
                     </div>
                 </div>
             </section>
@@ -466,7 +629,10 @@ const Overview = () => {
                 <Card className="bg-white border border-primary-mild">
                     <div className="flex flex-row items-center justify-between">
                         <p className="font-bold text-xl">Client</p>
-                        <button className="p-1 rounded-full bg-gray-200">
+                        <button
+                            onClick={() => handleLeads(userInfo)}
+                            className="p-1 rounded-full bg-gray-200"
+                        >
                             <TbPencil />
                         </button>
                     </div>
@@ -551,7 +717,10 @@ const Overview = () => {
                 <Card className="bg-white border border-primary-mild">
                     <div className="flex flex-row items-center justify-between">
                         <p className="font-bold text-xl">Insurance</p>
-                        <button className="p-1 rounded-full bg-gray-200">
+                        <button
+                            onClick={() => handleContact(userInfo)}
+                            className="p-1 rounded-full bg-gray-200"
+                        >
                             <TbPencil />
                         </button>
                     </div>
@@ -587,7 +756,10 @@ const Overview = () => {
                 <Card className="bg-white border border-primary-mild">
                     <div className="flex flex-row items-center justify-between">
                         <p className="font-bold text-xl">Adjuster</p>
-                        <button className="p-1 rounded-full bg-gray-200">
+                        <button
+                            onClick={() => handleContact(userInfo)}
+                            className="p-1 rounded-full bg-gray-200"
+                        >
                             <TbPencil />
                         </button>
                     </div>
@@ -746,7 +918,7 @@ const Overview = () => {
                                         <Timeline.Item
                                             media={
                                                 <Avatar
-                                                    className={` ${activity.avatar ? 'bg-black' : 'bg-gray-400'} `}
+                                                    className={` ${activity.avatar ? 'bg-blue-500' : 'bg-sky-400'} `}
                                                     icon={''}
                                                     size={14}
                                                 />
@@ -793,8 +965,11 @@ const Overview = () => {
                         <div className="p-4">
                             <TabContent value="comments">
                                 <div className="flex flex-col gap-[30px]">
-                                    {commentContent.map((comment) => (
-                                        <div className="flex flex-row gap-4">
+                                    {commentContent.map((comment, index) => (
+                                        <div
+                                            key={index}
+                                            className="flex flex-row gap-4"
+                                        >
                                             <div className="size-[60px]">
                                                 <img
                                                     src={comment.icon}
@@ -834,7 +1009,31 @@ const Overview = () => {
                                     </div>
                                 </div>
                             </TabContent>
-                            <TabContent value="attachments"></TabContent>
+                            <TabContent value="attachments">
+                                <div className="grid grid-cols-4 gap-4">
+                                    {attachmentContent.map(
+                                        (attachment, index) => (
+                                            <div className="p-3 h-fit rounded-lg bg-[#f5f5f5] w-fit shadow-lg">
+                                                <div className="min-h-[80px] min-w-[160px] border overflow-hidden rounded-lg">
+                                                    <img
+                                                        src={attachment.media}
+                                                        alt=""
+                                                        className="object-cover"
+                                                    />
+                                                </div>
+                                                <div className="pt-1 px-2">
+                                                    <p className="font-semibold uppercase pb-1">
+                                                        {attachment.name}
+                                                    </p>
+                                                    <p className="text-xs p-0 leading-[10px] text-gray-400">
+                                                        {attachment.size}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        ),
+                                    )}
+                                </div>
+                            </TabContent>
                         </div>
                     </Tabs>
                 </div>
