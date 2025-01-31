@@ -1,4 +1,4 @@
-import { Button, Tag } from '@/components/ui'
+import { Button, Tag, Tooltip } from '@/components/ui'
 import React from 'react'
 import { TbCloudDownload, TbDots } from 'react-icons/tb'
 import user from '@/assets/Images/user.png'
@@ -120,6 +120,9 @@ const Orders = () => {
             header: 'ID',
             accessorKey: 'id',
             enableSorting: true,
+            cell: ({ row }) => (
+                <span className="font-semibold">{row.original.id}</span>
+            ),
         },
         {
             header: 'DATE',
@@ -146,26 +149,38 @@ const Orders = () => {
         {
             header: 'Actions',
             accessorKey: 'actions',
-            enableSorting: false,
-            cell: ({ row }) => (
-                <div className="flex items-center gap-1">
-                    <Link
-                        to={'/overview/order-details'}
-                        onClick={() => handleView(row.original)}
-                    >
-                        <EditPencilIcon />
-                    </Link>
-                    <button onClick={() => handleEdit(row.original)}>
-                        <ViewEyeIcon />
-                    </button>
-                    <button onClick={() => handleDelete(row.original)}>
-                        <MdDeleteOutline size={20} className="text-black" />
-                    </button>
-                    <button onClick={() => handleDelete(row.original)}>
-                        <Coin />
-                    </button>
-                </div>
-            ),
+            enableSorting: false, // Disable sorting for the Actions column
+            cell: ({ row }) => {
+                const rowData = row.original // Extracting original data once
+
+                return (
+                    <div className="flex items-center gap-1">
+                        <Tooltip title="Edit" className="bg-white shadow-md">
+                            <button onClick={() => handleEdit(rowData)}>
+                                <EditPencilIcon />
+                            </button>
+                        </Tooltip>
+                        <Tooltip title="View" className="bg-white shadow-md">
+                            <button onClick={() => handleView(rowData)}>
+                                <ViewEyeIcon />
+                            </button>
+                        </Tooltip>
+                        <Tooltip title="Remove" className="bg-white shadow-md">
+                            <button onClick={() => handleDelete(rowData)}>
+                                <MdDeleteOutline
+                                    size={20}
+                                    className="text-black"
+                                />
+                            </button>
+                        </Tooltip>
+                        <Tooltip title="Pricing" className="bg-white shadow-md">
+                            <button onClick={() => handleDelete(row.original)}>
+                                <Coin />
+                            </button>
+                        </Tooltip>
+                    </div>
+                )
+            },
         },
     ]
 

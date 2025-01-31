@@ -1,4 +1,4 @@
-import { Button, Tag } from '@/components/ui'
+import { Button, Tag, Tooltip } from '@/components/ui'
 import React from 'react'
 import { TbCloudDownload, TbDots } from 'react-icons/tb'
 import user from '@/assets/Images/user.png'
@@ -363,19 +363,32 @@ const ClaimList = () => {
             header: 'Actions',
             accessorKey: 'actions',
             enableSorting: false, // Disable sorting for the Actions column
-            cell: ({ row }) => (
-                <div className="flex items-center gap-1">
-                    <button onClick={() => handleEdit(row.original)}>
-                        <EditPencilIcon />
-                    </button>
-                    <button onClick={() => handleView(row.original)}>
-                        <ViewEyeIcon />
-                    </button>
-                    <button onClick={() => handleDelete(row.original)}>
-                        <MdDeleteOutline size={20} className="text-black" />
-                    </button>
-                </div>
-            ),
+            cell: ({ row }) => {
+                const rowData = row.original // Extracting original data once
+
+                return (
+                    <div className="flex items-center gap-1">
+                        <Tooltip title="Edit" className="bg-white shadow-md">
+                            <button onClick={() => handleEdit(rowData)}>
+                                <EditPencilIcon />
+                            </button>
+                        </Tooltip>
+                        <Tooltip title="View" className="bg-white shadow-md">
+                            <button onClick={() => handleView(rowData)}>
+                                <ViewEyeIcon />
+                            </button>
+                        </Tooltip>
+                        <Tooltip title="Remove" className="bg-white shadow-md">
+                            <button onClick={() => handleDelete(rowData)}>
+                                <MdDeleteOutline
+                                    size={20}
+                                    className="text-black"
+                                />
+                            </button>
+                        </Tooltip>
+                    </div>
+                )
+            },
         },
     ]
 

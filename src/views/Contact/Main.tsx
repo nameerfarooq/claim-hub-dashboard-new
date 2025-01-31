@@ -1,4 +1,4 @@
-import { Button, Tag } from '@/components/ui'
+import { Button, Tag, Tooltip } from '@/components/ui'
 import { TbCloudDownload } from 'react-icons/tb'
 import user from '@/assets/Images/user.png'
 import RowSelection from '@/components/custom/AdvancedTable'
@@ -241,15 +241,24 @@ const Main = () => {
 
                 return (
                     <div className="flex items-center gap-1">
-                        <button onClick={() => handleEdit(rowData)}>
-                            <EditPencilIcon />
-                        </button>
-                        <button onClick={() => handleView(rowData)}>
-                            <ViewEyeIcon />
-                        </button>
-                        <button onClick={() => handleDelete(rowData)}>
-                            <MdDeleteOutline size={20} className="text-black" />
-                        </button>
+                        <Tooltip title="Edit" className="bg-white shadow-md">
+                            <button onClick={() => handleEdit(rowData)}>
+                                <EditPencilIcon />
+                            </button>
+                        </Tooltip>
+                        <Tooltip title="View" className="bg-white shadow-md">
+                            <button onClick={() => handleView(rowData)}>
+                                <ViewEyeIcon />
+                            </button>
+                        </Tooltip>
+                        <Tooltip title="Remove" className="bg-white shadow-md">
+                            <button onClick={() => handleDelete(rowData)}>
+                                <MdDeleteOutline
+                                    size={20}
+                                    className="text-black"
+                                />
+                            </button>
+                        </Tooltip>
                     </div>
                 )
             },

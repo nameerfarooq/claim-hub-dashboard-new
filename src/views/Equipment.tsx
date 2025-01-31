@@ -1,4 +1,4 @@
-import { Button, Tag } from '@/components/ui'
+import { Button, Tag, Tooltip } from '@/components/ui'
 import React from 'react'
 import { TbCloudDownload, TbDots } from 'react-icons/tb'
 import user from '@/assets/Images/user.png'
@@ -150,6 +150,9 @@ const Equipment = () => {
             header: 'Name',
             accessorKey: 'name',
             enableSorting: true,
+            cell: ({ row }) => (
+                <span className="font-semibold">{row.original.name}</span>
+            ),
         },
         {
             header: 'Place',
@@ -197,19 +200,32 @@ const Equipment = () => {
             header: 'Actions',
             accessorKey: 'actions',
             enableSorting: false, // Disable sorting for the Actions column
-            cell: ({ row }) => (
-                <div className="flex items-center gap-1">
-                    <button onClick={() => handleView(row.original)}>
-                        <EditPencilIcon />
-                    </button>
-                    <button onClick={() => handleEdit(row.original)}>
-                        <ViewEyeIcon />
-                    </button>
-                    <button onClick={() => handleDelete(row.original)}>
-                        <MdDeleteOutline size={20} className="text-black" />
-                    </button>
-                </div>
-            ),
+            cell: ({ row }) => {
+                const rowData = row.original // Extracting original data once
+
+                return (
+                    <div className="flex items-center gap-1">
+                        <Tooltip title="Edit" className="bg-white shadow-md">
+                            <button onClick={() => handleEdit(rowData)}>
+                                <EditPencilIcon />
+                            </button>
+                        </Tooltip>
+                        <Tooltip title="View" className="bg-white shadow-md">
+                            <button onClick={() => handleView(rowData)}>
+                                <ViewEyeIcon />
+                            </button>
+                        </Tooltip>
+                        <Tooltip title="Remove" className="bg-white shadow-md">
+                            <button onClick={() => handleDelete(rowData)}>
+                                <MdDeleteOutline
+                                    size={20}
+                                    className="text-black"
+                                />
+                            </button>
+                        </Tooltip>
+                    </div>
+                )
+            },
         },
     ]
 
@@ -245,7 +261,11 @@ const Equipment = () => {
                 </div>
             </div>
             <div>
-                <RowSelection data={tableData} columns={columns} />
+                <RowSelection
+                    filter={false}
+                    data={tableData}
+                    columns={columns}
+                />
             </div>
         </main>
     )
