@@ -103,40 +103,40 @@ const Overview = ({ data }: StatisticGroupsProps) => {
         window.dispatchEvent(new Event('resize'))
     }, [])
 
-    console.log(
-        selectedCategory,
-        data?.[selectedCategory]?.[selectedPeriod]?.chartData,
-    )
-
     // Extract chart data safely
     const chartData = data?.[selectedCategory]?.[selectedPeriod]?.chartData
     const xAxis = chartData?.date ?? []
     const series = Array.isArray(chartData?.series) ? chartData.series : []
 
+    console.log(data)
+
     useEffect(() => {
         try {
-            if (series.length > 0 && xAxis.length > 0) {
-                setChartComponent(
-                    <Chart
-                        type="area"
-                        series={series}
-                        xAxis={xAxis}
-                        height="400px"
-                        customOptions={{
-                            legend: { show: false },
-                            colors: [chartColors[selectedCategory]],
-                        }}
-                    />,
-                )
-            } else {
+            if (!series.length || !xAxis.length) {
                 console.warn('Chart data is empty or not ready')
-                setChartComponent(null)
+                setChartComponent(<div>No data available</div>)
+                return
             }
+
+            setChartComponent(
+                <Chart
+                    type="area"
+                    series={series}
+                    xAxis={xAxis}
+                    height="400px"
+                    customOptions={{
+                        legend: { show: false },
+                        colors: [chartColors[selectedCategory]],
+                    }}
+                />,
+            )
         } catch (error) {
             console.error('Error rendering chart:', error)
-            setChartComponent(null)
+            setChartComponent(<div>Error loading chart</div>)
         }
     }, [data, selectedCategory, selectedPeriod])
+
+    console.log(data?.[selectedCategory]?.[selectedPeriod]?.value)
 
     return (
         <Card>
@@ -163,17 +163,19 @@ const Overview = ({ data }: StatisticGroupsProps) => {
                     value={
                         <NumericFormat
                             displayType="text"
-                            value={data.totalProfit[selectedPeriod].value}
+                            value={data?.totalProfit?.[selectedPeriod]?.value}
                             prefix={'$'}
                             thousandSeparator={true}
                         />
                     }
-                    growShrink={data.totalProfit[selectedPeriod].growShrink}
+                    growShrink={data?.totalProfit?.[selectedPeriod]?.growShrink}
                     iconClass="bg-emerald-200"
                     icon={<TbCoin />}
                     label="totalProfit"
                     active={selectedCategory === 'totalProfit'}
-                    compareFrom={data.totalProfit[selectedPeriod].comparePeriod}
+                    compareFrom={
+                        data?.totalProfit?.[selectedPeriod]?.comparePeriod
+                    }
                     onClick={setSelectedCategory}
                 />
 
@@ -182,16 +184,18 @@ const Overview = ({ data }: StatisticGroupsProps) => {
                     value={
                         <NumericFormat
                             displayType="text"
-                            value={data.totalOrder[selectedPeriod].value}
+                            value={data?.totalOrder?.[selectedPeriod]?.value}
                             thousandSeparator={true}
                         />
                     }
-                    growShrink={data.totalOrder[selectedPeriod].growShrink}
+                    growShrink={data?.totalOrder?.[selectedPeriod]?.growShrink}
                     iconClass="bg-sky-200"
                     icon={<TbShoppingBagCheck />}
                     label="totalOrder"
                     active={selectedCategory === 'totalOrder'}
-                    compareFrom={data.totalProfit[selectedPeriod].comparePeriod}
+                    compareFrom={
+                        data?.totalOrder?.[selectedPeriod]?.comparePeriod
+                    }
                     onClick={setSelectedCategory}
                 />
 
@@ -199,15 +203,21 @@ const Overview = ({ data }: StatisticGroupsProps) => {
                     title="Total Claim"
                     value={
                         <AbbreviateNumber
-                            value={data.totalImpression[selectedPeriod].value}
+                            value={
+                                data?.totalImpression?.[selectedPeriod]?.value
+                            }
                         />
                     }
-                    growShrink={data.totalImpression[selectedPeriod].growShrink}
+                    growShrink={
+                        data?.totalImpression?.[selectedPeriod]?.growShrink
+                    }
                     iconClass="bg-purple-200"
                     icon={<TbEye />}
                     label="totalImpression"
                     active={selectedCategory === 'totalImpression'}
-                    compareFrom={data.totalProfit[selectedPeriod].comparePeriod}
+                    compareFrom={
+                        data?.totalImpression?.[selectedPeriod]?.comparePeriod
+                    }
                     onClick={setSelectedCategory}
                 />
             </div>

@@ -1,6 +1,5 @@
 import { Button, Tag, Tooltip } from '@/components/ui'
 import React from 'react'
-import { TbCloudDownload, TbDots } from 'react-icons/tb'
 import user from '@/assets/Images/user.png'
 import RowSelection from '@/components/custom/AdvancedTable'
 import Checkbox from '@/components/ui/Checkbox'
@@ -10,9 +9,9 @@ import type { CheckboxProps } from '@/components/ui/Checkbox'
 import AddUserIcon from '@/assets/icons/AddUser'
 import EditPencilIcon from '@/assets/icons/EditPencil'
 import ViewEyeIcon from '@/assets/icons/ViewEye'
-import { MdDeleteOutline } from 'react-icons/md'
+import { MdDeleteOutline, MdOutlineTask } from 'react-icons/md'
 import Coin from '@/assets/icons/Coin'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 type CheckBoxChangeEvent = ChangeEvent<HTMLInputElement>
 
@@ -183,10 +182,9 @@ const Orders = () => {
             },
         },
     ]
-
+    const nav = useNavigate()
     const handleView = (rowData: any) => {
-        console.log('View:', rowData)
-        // Add logic
+        nav('/overview/order-details')
     }
 
     const handleEdit = (rowData: any) => {
@@ -198,6 +196,8 @@ const Orders = () => {
         console.log('Delete:', rowData)
         // Add logic
     }
+
+   
 
     return (
         <main className="bg-white p-4 rounded-2xl border border-gray-200 h-full flex flex-col gap-[20px]">

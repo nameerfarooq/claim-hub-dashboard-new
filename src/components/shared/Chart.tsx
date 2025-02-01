@@ -1,4 +1,4 @@
-import { useRef, useEffect, useCallback, useMemo } from 'react'
+import { useRef, useEffect, useState, useCallback, useMemo } from 'react'
 import ApexChart from 'react-apexcharts'
 import {
     apexLineChartDefaultOption,
@@ -11,7 +11,7 @@ import { DIR_RTL } from '@/constants/theme.constant'
 import type { ApexOptions } from 'apexcharts'
 import type { Direction } from '@/@types/theme'
 import type { ReactNode } from 'react'
-import { isArray } from 'lodash'
+import ErrorBoundary from './ErrorBoundary'
 
 const notDonut = ['line', 'bar', 'area']
 
@@ -33,7 +33,7 @@ export interface ChartProps {
 
 const Chart = (props: ChartProps) => {
     const {
-        series,
+        series = [],
         width = '100%',
         height = 300,
         xAxis,
@@ -110,26 +110,39 @@ const Chart = (props: ChartProps) => {
         }
     }
 
-    console.log(series)
+    if (type === 'area') {
+        console.log(Array.isArray(series), series)
+    }
 
-    const chartSeries = Array.isArray(series) ? series : [series]
+    const [chartComponent, setChartComponent] = useState<ReactNode>(null)
 
+    useEffect(() => {
+        try {
+            setChartComponent(
+                <ApexChart
+                    options={options}
+                    type={type}
+                    series={series}
+                    width={width}
+                    height={height}
+                    className={className}
+                    {...rest}
+                />,
+            )
+        } catch (error) {
+            console.error(error)
+        }
+    }, [series])
     return (
-        <div
-            ref={chartRef}
-            style={direction === DIR_RTL ? { direction: 'ltr' } : {}}
-            className="chartRef"
-        >
-            <ApexChart
-                options={options}
-                type={type}
-                series={chartSeries || []}
-                width={width}
-                height={height}
-                className={className}
-                {...rest}
-            />
-        </div>
+        <ErrorBoundary>
+            <div
+                ref={chartRef}
+                style={direction === DIR_RTL ? { direction: 'ltr' } : {}}
+                className="chartRef"
+            >
+                {chartComponent}
+            </div>
+        </ErrorBoundary>
     )
 }
 
