@@ -53,7 +53,7 @@ const Main = () => {
             status: 'Active',
             method: 'Phone',
             city: 'Miami',
-            claim: ['P-402', 'P-104'],
+            claim: ['C-402', 'C-104'],
             createDate: '2024-06-15',
             lastContact: '2024-06-28',
         },
@@ -70,7 +70,7 @@ const Main = () => {
             status: 'Active',
             method: 'SMS',
             city: 'Fort Lauderdale',
-            claim: ['P-102'],
+            claim: ['C-102'],
             createDate: '2024-06-20',
             lastContact: '2024-07-01',
         },
@@ -87,7 +87,7 @@ const Main = () => {
             status: 'Active',
             method: 'Email',
             city: 'Boca Raton',
-            claim: ['P-103', 'P-105'],
+            claim: ['C-103', 'C-105'],
             createDate: '2024-06-22',
             lastContact: '2024-06-30',
         },
@@ -104,7 +104,7 @@ const Main = () => {
             status: 'Active',
             method: 'WhatsApp',
             city: 'Orlando',
-            claim: ['P-104'],
+            claim: ['C-104'],
             createDate: '2024-06-18',
             lastContact: '2024-06-29',
         },
@@ -156,7 +156,7 @@ const Main = () => {
             header: 'Full Name',
             accessorKey: 'name',
             cell: ({ row }) => (
-                <div className="flex items-center gap-2">
+                <div onClick={() => handleView(row.original)} className="cursor-pointer flex items-center gap-2">
                     <img
                         src={row.original.name.media}
                         alt={row.original.name.fullName}
@@ -182,6 +182,7 @@ const Main = () => {
             header: 'Phone Numer',
             accessorKey: 'number',
             enableSorting: true,
+            cell: ({ row }) => <span className='text-nowrap text-gray-500'>{row.original.number}</span>,
         },
         {
             header: 'Email',
@@ -200,11 +201,11 @@ const Main = () => {
                 </Tag>
             ),
         },
-        {
-            header: 'Preferred Contact Method',
-            accessorKey: 'method',
-            enableSorting: true,
-        },
+        // {
+        //     header: 'Preferred Contact Method',
+        //     accessorKey: 'method',
+        //     enableSorting: true,
+        // },
         {
             header: 'Assigned Claim',
             accessorKey: 'claim',
@@ -212,12 +213,13 @@ const Main = () => {
             cell: ({ row }) => (
                 <div className="flex flex-row gap-2">
                     {row.original.claim.map((claim: string, index: number) => (
-                        <p
+                        <button
+                            onClick={() => nav('/overview')}
                             key={index}
-                            className="bg-gray-100 p-1 rounded-lg text-nowrap"
+                            className="bg-gray-100 p-1 rounded-lg text-nowrap curosor-pointer"
                         >
-                            {claim}
-                        </p>
+                            {claim} 
+                        </button>
                     ))}
                 </div>
             ),

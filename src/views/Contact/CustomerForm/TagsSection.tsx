@@ -15,7 +15,7 @@ const defaultOptions = [
 const TagsSection = ({ control }: TagsSectionProps) => {
     return (
         <Card>
-            <h4 className="mb-2">Contact Tags</h4>
+            <h4 className="mb-2">Associated Claim</h4>
             <div className="mt-6">
                 <Controller
                     name="tags"

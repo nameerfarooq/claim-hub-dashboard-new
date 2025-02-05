@@ -7,7 +7,7 @@ import { useLocation, useNavigate } from 'react-router-dom'
 const CustomerInfoField = ({ title, value }) => {
     return (
         <div>
-            <span className="font-semibold">{title}</span>
+            <span className="font-semibold text-gray-500">{title}</span>
             <p className="heading-text font-bold">{value}</p>
         </div>
     )
@@ -61,6 +61,7 @@ const Main = () => {
                             />
                             <h4 className="font-bold">{item.name.fullName}</h4>
                         </div>
+                        <div className=''> <Tag className={`${item.status === 'Active' ? 'bg-blue-100' : 'bg-red-100'}`} >{item.status}</Tag> </div>
                         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-1 gap-y-7 gap-x-4 mt-10">
                             <CustomerInfoField
                                 title="Company"
@@ -119,17 +120,17 @@ const Main = () => {
             </div>
             <Card className="w-full">
                 <div className="w-full p-4">
-                    <h5>Claims</h5>
+                    <h5>Associated Claims</h5>
                     <div className="grid grid-flow-col gap-2">
                         {item.claim &&
                             item.claim.map((i, index) => (
-                                <div key={index} className="pt-4">
+                                <div key={index} onClick={() => nav('/overview')} className="pt-4 w-fit cursor-pointer">
                                     <Tag>{i}</Tag>
                                 </div>
                             ))}
                     </div>
                 </div>
-                <div className="w-full grid grid-flow-col gap-4 p-4">
+                {/* <div className="w-full grid grid-flow-col gap-4 p-4">
                     <Card className="bg-gray-100 shadow">
                         <h6>Status</h6>
                         <p>{item.status}</p>
@@ -138,7 +139,7 @@ const Main = () => {
                         <h6>Preferred Contact Method</h6>
                         <p>{item.method}</p>
                     </Card>
-                </div>
+                </div> */}
             </Card>
         </div>
     )

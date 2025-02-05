@@ -50,7 +50,7 @@ const Leads = () => {
             phone: '(305) 555-7890',
             email: 'john.smith@email.com',
             source: 'Google Ads',
-            type: 'Water',
+            type: ['Water', 'Fire'],
             provider: 'State Farm',
             policyNum: 'FL-123456',
             pa: 'None',
@@ -68,7 +68,7 @@ const Leads = () => {
             phone: '(786) 555-3456',
             email: 'linda.garcia@email.com',
             source: 'Referral',
-            type: 'Fire',
+            type: ['Fire', 'Mold'],
             provider: 'Allstate',
             policyNum: 'None',
             pa: 'Sophia Rivera',
@@ -86,7 +86,7 @@ const Leads = () => {
             phone: '(954) 555-6789',
             email: 'mark.johnson@email.com',
             source: 'Website',
-            type: 'Mold',
+            type: ['Mold',],
             provider: 'Progressive',
             policyNum: 'None',
             pa: 'None',
@@ -104,7 +104,7 @@ const Leads = () => {
             phone: '(407) 555-1234',
             email: 'susan.lee@email.com',
             source: 'Insurance',
-            type: 'Storm',
+            type: ['Storm',],
             provider: 'USAA',
             policyNum: 'US-765432',
             pa: 'Sophia Rivera',
@@ -122,7 +122,7 @@ const Leads = () => {
             phone: '(561) 555-2345',
             email: 'james.brown@email.com',
             source: 'Direct Call',
-            type: 'General Inquiry',
+            type: ['General Inquiry'],
             provider: 'None',
             policyNum: 'None',
             pa: 'David Martinez',
@@ -168,7 +168,7 @@ const Leads = () => {
                         alt={row.original.name.fullName}
                         className="w-8 h-8 rounded-full"
                     />
-                    <button className="w-fit font-semibold text-black">
+                    <button onClick={() => handleView(row.original)} className="w-fit font-semibold text-black">
                         {row.original.name.fullName}
                     </button>
                 </div>
@@ -195,7 +195,30 @@ const Leads = () => {
         {
             header: 'Type',
             accessorKey: 'type',
-            enableSorting: true,
+            cell: ({ row }) => (
+                <div className="flex items-center gap-1">
+                    {row.original.type.map((item, index) => (
+                        <Tag
+                            key={index}
+                            className={` ${
+                                item === 'Water'
+                                    ? 'bg-sky-100'
+                                    : item === 'Hurricane'
+                                      ? 'bg-red-100'
+                                      : item === 'Fire'
+                                        ? 'bg-red-100'
+                                        : item === 'Mold'
+                                          ? 'bg-green-100'
+                                          : item === 'Storm'
+                                            ? 'bg-sky-100'
+                                            : ''
+                            }`}
+                        >
+                            {item}
+                        </Tag>
+                    ))}
+                </div>
+            ),
         },
         {
             header: 'Insurance Provider',
@@ -213,7 +236,7 @@ const Leads = () => {
             header: 'PA Associated',
             accessorKey: 'pa',
             enableSorting: true,
-            cell: ({ row }) => <button> {row.original.pa} </button>,
+            cell: ({ row }) => <button onClick={() => handleView(row.original)} className='p-2'> {row.original.pa} </button>,
         },
 
         {

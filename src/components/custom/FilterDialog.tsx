@@ -8,7 +8,7 @@ import MenuCollapse from '../ui/Menu/MenuCollapse'
 import MenuItem from '../ui/Menu/MenuItem'
 import Checkbox from '../ui/Checkbox/Checkbox'
 
-const FilterDialog = () => {
+const FilterDialog = ({ subStage }) => {
     const [dialogIsOpen, setIsOpen] = useState(false)
 
     const openDialog = () => {
@@ -43,238 +43,111 @@ const FilterDialog = () => {
                 <h5 className="mb-4">Filter</h5>
                 <div className="space-y-4 flex flex-col max-h-[60vh] overflow-auto">
                     <Menu>
-                        <MenuCollapse label="Milestone Pipeline">
+                        <MenuCollapse label="Type">
                             <div className="flex flex-col">
                                 <MenuItem eventKey="1">
                                     <Checkbox className="flex flex-row-reverse w-full justify-between">
-                                        Lead
+                                        Hurricane
                                     </Checkbox>
                                 </MenuItem>
-                                <MenuItem eventKey="1">
+                                <MenuItem eventKey="2">
                                     <Checkbox className="flex flex-row-reverse w-full justify-between">
-                                        Scheduling
+                                        Storm
                                     </Checkbox>
                                 </MenuItem>
-                                <MenuItem eventKey="1">
+                                <MenuItem eventKey="3">
                                     <Checkbox className="flex flex-row-reverse w-full justify-between">
-                                        Assesment
+                                        Fire
                                     </Checkbox>
                                 </MenuItem>
-                                <MenuItem eventKey="1">
+                                <MenuItem eventKey="4">
                                     <Checkbox className="flex flex-row-reverse w-full justify-between">
-                                        Determination
+                                        Mold
                                     </Checkbox>
                                 </MenuItem>
-                                <MenuItem eventKey="1">
+                                <MenuItem eventKey="5">
                                     <Checkbox className="flex flex-row-reverse w-full justify-between">
-                                        Ligitation
+                                        In Progress
+                                    </Checkbox>
+                                </MenuItem>
+                                <MenuItem eventKey="6">
+                                    <Checkbox className="flex flex-row-reverse w-full justify-between">
+                                        Hold
+                                    </Checkbox>
+                                </MenuItem>
+                                <MenuItem eventKey="7">
+                                    <Checkbox className="flex flex-row-reverse w-full justify-between">
+                                        Follow Up
                                     </Checkbox>
                                 </MenuItem>
                             </div>
                         </MenuCollapse>
-                        <MenuCollapse label="Milestone Pipeline">
+                        <MenuCollapse label="Stage">
                             <div className="flex flex-col">
                                 <MenuItem eventKey="1">
                                     <Checkbox className="flex flex-row-reverse w-full justify-between">
-                                        Lead
+                                        Sales
                                     </Checkbox>
                                 </MenuItem>
                                 <MenuItem eventKey="1">
                                     <Checkbox className="flex flex-row-reverse w-full justify-between">
-                                        Scheduling
+                                        Processing
                                     </Checkbox>
                                 </MenuItem>
                                 <MenuItem eventKey="1">
                                     <Checkbox className="flex flex-row-reverse w-full justify-between">
-                                        Assesment
+                                        Job
                                     </Checkbox>
                                 </MenuItem>
                                 <MenuItem eventKey="1">
                                     <Checkbox className="flex flex-row-reverse w-full justify-between">
-                                        Determination
+                                        Accounting
                                     </Checkbox>
                                 </MenuItem>
                                 <MenuItem eventKey="1">
                                     <Checkbox className="flex flex-row-reverse w-full justify-between">
-                                        Ligitation
+                                        Negotiations
+                                    </Checkbox>
+                                </MenuItem>
+                                <MenuItem eventKey="1">
+                                    <Checkbox className="flex flex-row-reverse w-full justify-between">
+                                        Close Out
                                     </Checkbox>
                                 </MenuItem>
                             </div>
                         </MenuCollapse>
-                        <MenuCollapse label="Milestone Pipeline">
-                            <div className="flex flex-col">
-                                <MenuItem eventKey="1">
-                                    <Checkbox className="flex flex-row-reverse w-full justify-between">
-                                        Lead
-                                    </Checkbox>
-                                </MenuItem>
-                                <MenuItem eventKey="1">
-                                    <Checkbox className="flex flex-row-reverse w-full justify-between">
-                                        Scheduling
-                                    </Checkbox>
-                                </MenuItem>
-                                <MenuItem eventKey="1">
-                                    <Checkbox className="flex flex-row-reverse w-full justify-between">
-                                        Assesment
-                                    </Checkbox>
-                                </MenuItem>
-                                <MenuItem eventKey="1">
-                                    <Checkbox className="flex flex-row-reverse w-full justify-between">
-                                        Determination
-                                    </Checkbox>
-                                </MenuItem>
-                                <MenuItem eventKey="1">
-                                    <Checkbox className="flex flex-row-reverse w-full justify-between">
-                                        Ligitation
-                                    </Checkbox>
-                                </MenuItem>
-                            </div>
-                        </MenuCollapse>
-                        <MenuCollapse label="Milestone Pipeline">
-                            <div className="flex flex-col">
-                                <MenuItem eventKey="1">
-                                    <Checkbox className="flex flex-row-reverse w-full justify-between">
-                                        Lead
-                                    </Checkbox>
-                                </MenuItem>
-                                <MenuItem eventKey="1">
-                                    <Checkbox className="flex flex-row-reverse w-full justify-between">
-                                        Scheduling
-                                    </Checkbox>
-                                </MenuItem>
-                                <MenuItem eventKey="1">
-                                    <Checkbox className="flex flex-row-reverse w-full justify-between">
-                                        Assesment
-                                    </Checkbox>
-                                </MenuItem>
-                                <MenuItem eventKey="1">
-                                    <Checkbox className="flex flex-row-reverse w-full justify-between">
-                                        Determination
-                                    </Checkbox>
-                                </MenuItem>
-                                <MenuItem eventKey="1">
-                                    <Checkbox className="flex flex-row-reverse w-full justify-between">
-                                        Ligitation
-                                    </Checkbox>
-                                </MenuItem>
-                            </div>
-                        </MenuCollapse>
-                        <MenuCollapse label="Milestone Pipeline">
-                            <div className="flex flex-col">
-                                <MenuItem eventKey="1">
-                                    <Checkbox className="flex flex-row-reverse w-full justify-between">
-                                        Lead
-                                    </Checkbox>
-                                </MenuItem>
-                                <MenuItem eventKey="1">
-                                    <Checkbox className="flex flex-row-reverse w-full justify-between">
-                                        Scheduling
-                                    </Checkbox>
-                                </MenuItem>
-                                <MenuItem eventKey="1">
-                                    <Checkbox className="flex flex-row-reverse w-full justify-between">
-                                        Assesment
-                                    </Checkbox>
-                                </MenuItem>
-                                <MenuItem eventKey="1">
-                                    <Checkbox className="flex flex-row-reverse w-full justify-between">
-                                        Determination
-                                    </Checkbox>
-                                </MenuItem>
-                                <MenuItem eventKey="1">
-                                    <Checkbox className="flex flex-row-reverse w-full justify-between">
-                                        Ligitation
-                                    </Checkbox>
-                                </MenuItem>
-                            </div>
-                        </MenuCollapse>
-                        <MenuCollapse label="Milestone Pipeline">
-                            <div className="flex flex-col">
-                                <MenuItem eventKey="1">
-                                    <Checkbox className="flex flex-row-reverse w-full justify-between">
-                                        Lead
-                                    </Checkbox>
-                                </MenuItem>
-                                <MenuItem eventKey="1">
-                                    <Checkbox className="flex flex-row-reverse w-full justify-between">
-                                        Scheduling
-                                    </Checkbox>
-                                </MenuItem>
-                                <MenuItem eventKey="1">
-                                    <Checkbox className="flex flex-row-reverse w-full justify-between">
-                                        Assesment
-                                    </Checkbox>
-                                </MenuItem>
-                                <MenuItem eventKey="1">
-                                    <Checkbox className="flex flex-row-reverse w-full justify-between">
-                                        Determination
-                                    </Checkbox>
-                                </MenuItem>
-                                <MenuItem eventKey="1">
-                                    <Checkbox className="flex flex-row-reverse w-full justify-between">
-                                        Ligitation
-                                    </Checkbox>
-                                </MenuItem>
-                            </div>
-                        </MenuCollapse>
-                        <MenuCollapse label="Milestone Pipeline">
-                            <div className="flex flex-col">
-                                <MenuItem eventKey="1">
-                                    <Checkbox className="flex flex-row-reverse w-full justify-between">
-                                        Lead
-                                    </Checkbox>
-                                </MenuItem>
-                                <MenuItem eventKey="1">
-                                    <Checkbox className="flex flex-row-reverse w-full justify-between">
-                                        Scheduling
-                                    </Checkbox>
-                                </MenuItem>
-                                <MenuItem eventKey="1">
-                                    <Checkbox className="flex flex-row-reverse w-full justify-between">
-                                        Assesment
-                                    </Checkbox>
-                                </MenuItem>
-                                <MenuItem eventKey="1">
-                                    <Checkbox className="flex flex-row-reverse w-full justify-between">
-                                        Determination
-                                    </Checkbox>
-                                </MenuItem>
-                                <MenuItem eventKey="1">
-                                    <Checkbox className="flex flex-row-reverse w-full justify-between">
-                                        Ligitation
-                                    </Checkbox>
-                                </MenuItem>
-                            </div>
-                        </MenuCollapse>
-                        <MenuCollapse label="Milestone Pipeline">
-                            <div className="flex flex-col">
-                                <MenuItem eventKey="1">
-                                    <Checkbox className="flex flex-row-reverse w-full justify-between">
-                                        Lead
-                                    </Checkbox>
-                                </MenuItem>
-                                <MenuItem eventKey="1">
-                                    <Checkbox className="flex flex-row-reverse w-full justify-between">
-                                        Scheduling
-                                    </Checkbox>
-                                </MenuItem>
-                                <MenuItem eventKey="1">
-                                    <Checkbox className="flex flex-row-reverse w-full justify-between">
-                                        Assesment
-                                    </Checkbox>
-                                </MenuItem>
-                                <MenuItem eventKey="1">
-                                    <Checkbox className="flex flex-row-reverse w-full justify-between">
-                                        Determination
-                                    </Checkbox>
-                                </MenuItem>
-                                <MenuItem eventKey="1">
-                                    <Checkbox className="flex flex-row-reverse w-full justify-between">
-                                        Ligitation
-                                    </Checkbox>
-                                </MenuItem>
-                            </div>
-                        </MenuCollapse>
+                        {subStage && (
+                            <MenuCollapse label="Sub Stage">
+                                <div className="flex flex-col">
+                                    <MenuItem eventKey="1">
+                                        <Checkbox className="flex flex-row-reverse w-full justify-between">
+                                            Qualification
+                                        </Checkbox>
+                                    </MenuItem>
+                                    <MenuItem eventKey="1">
+                                        <Checkbox className="flex flex-row-reverse w-full justify-between">
+                                            Close
+                                        </Checkbox>
+                                    </MenuItem>
+                                    <MenuItem eventKey="1">
+                                        <Checkbox className="flex flex-row-reverse w-full justify-between">
+                                            Intake
+                                        </Checkbox>
+                                    </MenuItem>
+                                    <MenuItem eventKey="1">
+                                        <Checkbox className="flex flex-row-reverse w-full justify-between">
+                                            Schedulling
+                                        </Checkbox>
+                                    </MenuItem>
+                                    <MenuItem eventKey="1">
+                                        <Checkbox className="flex flex-row-reverse w-full justify-between">
+                                            Prep
+                                        </Checkbox>
+                                    </MenuItem>
+                                </div>
+                            </MenuCollapse>
+                        )}
+
                         <MenuCollapse label="Milestone Pipeline">
                             <div className="flex flex-col">
                                 <MenuItem eventKey="1">

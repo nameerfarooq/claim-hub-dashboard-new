@@ -165,7 +165,7 @@ function RowSelection<TData>({
                 </div>
                 {filter && (
                     <div>
-                        <FilterDialog />
+                        <FilterDialog subStage={true} />
                     </div>
                 )}
             </div>

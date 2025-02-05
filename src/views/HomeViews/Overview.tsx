@@ -159,7 +159,7 @@ const Overview = ({ data }: StatisticGroupsProps) => {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 rounded-2xl p-3 bg-gray-100 dark:bg-gray-700 mt-4">
                 <StatisticCard
-                    title="Total Revenue"
+                    title="Revenue"
                     value={
                         <NumericFormat
                             displayType="text"
@@ -180,7 +180,7 @@ const Overview = ({ data }: StatisticGroupsProps) => {
                 />
 
                 <StatisticCard
-                    title="Total Profit"
+                    title="Pending Payments"
                     value={
                         <NumericFormat
                             displayType="text"
@@ -200,7 +200,7 @@ const Overview = ({ data }: StatisticGroupsProps) => {
                 />
 
                 <StatisticCard
-                    title="Total Claim"
+                    title="Avg. Job Revenue"
                     value={
                         <AbbreviateNumber
                             value={

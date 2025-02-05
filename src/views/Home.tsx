@@ -259,51 +259,60 @@ const Home = () => {
                             </div>
                             <div className="grid grid-cols-3 gap-4 w-full bg-gray-100 p-[8px] rounded-[20px]">
                                 <Card bordered={false} className="!shadow-none">
-                                    <div className="flex flex-row justify-between items-center">
+                                    <div className="flex flex-row justify-between items-center relative">
                                         <div className="flex flex-col gap-[10px]">
                                             <p className="text-sm font-bold">
-                                                Sales
+                                                Jobs in Progress
                                             </p>
-                                            <p className="text-3xl font-bold">
+                                            <p className="text-2xl font-bold">
                                                 12
                                             </p>
                                         </div>
+                                        <div className="absolute right-[10px] top-[35%]">
+
                                         <Avatar
                                             className="bg-primary-light"
                                             icon={<TbProgressBolt />}
-                                        />
+                                            />
+                                            </div>
                                     </div>
                                 </Card>
                                 <Card bordered={false} className="!shadow-none">
-                                    <div className="flex flex-row justify-between items-center">
+                                    <div className="flex flex-row justify-between items-center relative">
                                         <div className="flex flex-col gap-[10px]">
                                             <p className="text-sm font-bold">
-                                                Processing
+                                                New Claims
                                             </p>
                                             <p className="text-3xl font-bold">
                                                 68
                                             </p>
                                         </div>
+                                        <div className="absolute right-[10px] top-[35%]">
+
                                         <Avatar
                                             className="bg-success-light"
                                             icon={<TbCopyCheck />}
-                                        />
+                                            />
+                                            </div>
                                     </div>
                                 </Card>
                                 <Card bordered={false} className="!shadow-none">
-                                    <div className="flex flex-row justify-between items-center">
+                                    <div className="flex flex-row justify-between items-center relative">
                                         <div className="flex flex-col gap-[10px]">
                                             <p className="text-sm font-bold">
-                                                Job
+                                                Response Time
                                             </p>
                                             <p className="text-3xl font-bold">
                                                 7
                                             </p>
                                         </div>
+                                        <div className="absolute right-[10px] top-[35%]">
+
                                         <Avatar
                                             className="bg-grape"
                                             icon={<TbArrowDownToArc />}
-                                        />
+                                            />
+                                            </div>
                                     </div>
                                 </Card>
                             </div>

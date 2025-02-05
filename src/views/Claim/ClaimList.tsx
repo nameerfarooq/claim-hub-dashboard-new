@@ -286,7 +286,7 @@ const ClaimList = () => {
             header: 'Customer Name',
             accessorKey: 'name',
             cell: ({ row }) => (
-                <button className="flex items-center gap-2">
+                <button onClick={() => handleView(row.original)} className="flex items-center gap-2">
                     <img
                         src={row.original.name.media}
                         alt={row.original.name.fullName}
@@ -336,16 +336,67 @@ const ClaimList = () => {
             header: 'Status',
             accessorKey: 'status',
             enableSorting: true,
+            cell: ({ row }) => (
+                <Tag
+                className={` ${
+                    row.original.status === 'In Progress'
+                        ? 'bg-sky-100'
+                        : row.original.status === 'Closed'
+                          ? 'bg-red-100'
+                          : row.original.status === 'Follow-Up'
+                            ? 'bg-red-100'
+                            : row.original.status === 'Hold'
+                              ? 'bg-green-100'
+                              :  'bg-sky-100'
+                }`}
+            >
+                {row.original.status}
+            </Tag>
+            )
         },
         {
             header: 'Stage',
             accessorKey: 'stage',
             enableSorting: true,
+            cell: ({ row }) => (
+                <Tag
+                className={` ${
+                    row.original.stage === 'Sales'
+                        ? 'bg-sky-100'
+                        : row.original.stage === 'Processing'
+                          ? 'bg-red-100'
+                          : row.original.stage === 'Job'
+                            ? 'bg-red-100'
+                            : row.original.stage === 'Accounting'
+                              ? 'bg-green-100'
+                              :  'bg-sky-100'
+                }`}
+            >
+                {row.original.stage}
+            </Tag>
+            )
         },
         {
             header: 'Sub-Stage',
             accessorKey: 'subStage',
             enableSorting: true,
+            cell: ({ row }) => (
+                <Tag
+                className={` ${
+                    row.original.subStage === 'Qualification'
+                        ? 'bg-sky-100'
+                        : row.original.subStage === 'Close'
+                          ? 'bg-red-100'
+                          : row.original.subStage === 'Intake'
+                            ? 'bg-red-100'
+                            : row.original.subStage === 'Prep'
+                              ? 'bg-green-100'
+                              :  'bg-sky-100'
+                }`}
+            >
+                {row.original.subStage}
+            </Tag>
+            )
         },
         {
             header: 'Last Updated',
@@ -357,7 +408,7 @@ const ClaimList = () => {
             header: 'Assigned PA',
             accessorKey: 'pa',
             enableSorting: true,
-            cell: ({ row }) => <button>{row.original.pa}</button>,
+            cell: ({ row }) => <button onClick={() => handleView(row.original)}>{row.original.pa}</button>,
         },
         {
             header: 'Actions',
@@ -400,8 +451,7 @@ const ClaimList = () => {
     }
 
     const handleEdit = (rowData: any) => {
-        console.log('Edit:', rowData)
-        // Add logic
+        nav('/contact-edit', { state: { item: rowData } })
     }
 
     const handleDelete = (rowData: any) => {
