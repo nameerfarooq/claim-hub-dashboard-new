@@ -65,90 +65,89 @@ const FilterDialog = ({ subStage }) => {
                                         Mold
                                     </Checkbox>
                                 </MenuItem>
-                                <MenuItem eventKey="5">
+                                {/* <MenuItem eventKey="5">
                                     <Checkbox className="flex flex-row-reverse w-full justify-between">
                                         In Progress
                                     </Checkbox>
-                                </MenuItem>
+                                </MenuItem> */}
                                 <MenuItem eventKey="6">
                                     <Checkbox className="flex flex-row-reverse w-full justify-between">
                                         Hold
                                     </Checkbox>
                                 </MenuItem>
-                                <MenuItem eventKey="7">
+                                {/* <MenuItem eventKey="7">
                                     <Checkbox className="flex flex-row-reverse w-full justify-between">
                                         Follow Up
                                     </Checkbox>
-                                </MenuItem>
-                            </div>
-                        </MenuCollapse>
-                        <MenuCollapse label="Stage">
-                            <div className="flex flex-col">
-                                <MenuItem eventKey="1">
-                                    <Checkbox className="flex flex-row-reverse w-full justify-between">
-                                        Sales
-                                    </Checkbox>
-                                </MenuItem>
-                                <MenuItem eventKey="1">
-                                    <Checkbox className="flex flex-row-reverse w-full justify-between">
-                                        Processing
-                                    </Checkbox>
-                                </MenuItem>
-                                <MenuItem eventKey="1">
-                                    <Checkbox className="flex flex-row-reverse w-full justify-between">
-                                        Job
-                                    </Checkbox>
-                                </MenuItem>
-                                <MenuItem eventKey="1">
-                                    <Checkbox className="flex flex-row-reverse w-full justify-between">
-                                        Accounting
-                                    </Checkbox>
-                                </MenuItem>
-                                <MenuItem eventKey="1">
-                                    <Checkbox className="flex flex-row-reverse w-full justify-between">
-                                        Negotiations
-                                    </Checkbox>
-                                </MenuItem>
-                                <MenuItem eventKey="1">
-                                    <Checkbox className="flex flex-row-reverse w-full justify-between">
-                                        Close Out
-                                    </Checkbox>
-                                </MenuItem>
+                                </MenuItem> */}
                             </div>
                         </MenuCollapse>
                         {subStage && (
-                            <MenuCollapse label="Sub Stage">
+                            <MenuCollapse label="Stage">
                                 <div className="flex flex-col">
                                     <MenuItem eventKey="1">
                                         <Checkbox className="flex flex-row-reverse w-full justify-between">
-                                            Qualification
+                                            Sales
                                         </Checkbox>
                                     </MenuItem>
                                     <MenuItem eventKey="1">
                                         <Checkbox className="flex flex-row-reverse w-full justify-between">
-                                            Close
+                                            Processing
                                         </Checkbox>
                                     </MenuItem>
                                     <MenuItem eventKey="1">
                                         <Checkbox className="flex flex-row-reverse w-full justify-between">
-                                            Intake
+                                            Job
                                         </Checkbox>
                                     </MenuItem>
                                     <MenuItem eventKey="1">
                                         <Checkbox className="flex flex-row-reverse w-full justify-between">
-                                            Schedulling
+                                            Accounting
                                         </Checkbox>
                                     </MenuItem>
                                     <MenuItem eventKey="1">
                                         <Checkbox className="flex flex-row-reverse w-full justify-between">
-                                            Prep
+                                            Negotiations
+                                        </Checkbox>
+                                    </MenuItem>
+                                    <MenuItem eventKey="1">
+                                        <Checkbox className="flex flex-row-reverse w-full justify-between">
+                                            Close Out
                                         </Checkbox>
                                     </MenuItem>
                                 </div>
                             </MenuCollapse>
                         )}
-
-                        <MenuCollapse label="Milestone Pipeline">
+                        <MenuCollapse label="Sub Stage">
+                            <div className="flex flex-col">
+                                <MenuItem eventKey="1">
+                                    <Checkbox className="flex flex-row-reverse w-full justify-between">
+                                        Qualification
+                                    </Checkbox>
+                                </MenuItem>
+                                <MenuItem eventKey="1">
+                                    <Checkbox className="flex flex-row-reverse w-full justify-between">
+                                        Close
+                                    </Checkbox>
+                                </MenuItem>
+                                <MenuItem eventKey="1">
+                                    <Checkbox className="flex flex-row-reverse w-full justify-between">
+                                        Intake
+                                    </Checkbox>
+                                </MenuItem>
+                                <MenuItem eventKey="1">
+                                    <Checkbox className="flex flex-row-reverse w-full justify-between">
+                                        Schedulling
+                                    </Checkbox>
+                                </MenuItem>
+                                <MenuItem eventKey="1">
+                                    <Checkbox className="flex flex-row-reverse w-full justify-between">
+                                        Prep
+                                    </Checkbox>
+                                </MenuItem>
+                            </div>
+                        </MenuCollapse>
+                        {/* <MenuCollapse label="Milestone Pipeline">
                             <div className="flex flex-col">
                                 <MenuItem eventKey="1">
                                     <Checkbox className="flex flex-row-reverse w-full justify-between">
@@ -176,7 +175,7 @@ const FilterDialog = ({ subStage }) => {
                                     </Checkbox>
                                 </MenuItem>
                             </div>
-                        </MenuCollapse>
+                        </MenuCollapse> */}
                     </Menu>
                 </div>
                 <div className="text-right mt-6">

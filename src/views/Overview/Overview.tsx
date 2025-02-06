@@ -643,7 +643,7 @@ const Overview = () => {
                             >
                                 <div className="flex flex-col items-center justify-center relative">
                                     <div
-                                        className={`h-10 w-10 rounded-full flex items-center justify-center ${step.completed ? 'bg-primary text-white' : 'bg-primary-subtle text-black'} `}
+                                        className={`h-10 w-10 rounded-full flex items-center justify-center border-2 border-primary ${step.completed ? 'bg-primary text-white' : 'bg-primary-subtle text-black'} `}
                                     >
                                         {step.icon}
                                     </div>
@@ -665,7 +665,7 @@ const Overview = () => {
                 </div>
                 <div className="w-full mx-auto flex flex-row items-center justify-center mt-2">
                     <button className="py-2 px-3 rounded-lg text-lg font-bold bg-primary-mild text-white">
-                        Submit by “Schedule”
+                        Starting Intake Process
                     </button>
                 </div>
             </section>

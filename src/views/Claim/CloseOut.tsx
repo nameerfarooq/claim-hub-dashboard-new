@@ -331,20 +331,54 @@ const CloseOut = () => {
             accessorKey: 'city',
             enableSorting: true,
         },
-        {
-            header: 'Status',
-            accessorKey: 'status',
-            enableSorting: true,
-        },
+        // {
+        //     header: 'Status',
+        //     accessorKey: 'status',
+        //     enableSorting: true,
+        // },
         {
             header: 'Stage',
             accessorKey: 'stage',
             enableSorting: true,
+            cell: ({ row }) => (
+                <Tag
+                    className={` ${
+                        row.original.stage === 'Close Out'
+                            ? 'bg-sky-100'
+                            : row.original.stage === 'Processing'
+                              ? 'bg-red-100'
+                              : row.original.stage === 'Job'
+                                ? 'bg-yellow-100'
+                                : row.original.stage === 'Accounting'
+                                  ? 'bg-green-100'
+                                  : 'bg-purple-100'
+                    }`}
+                >
+                    {row.original.stage}
+                </Tag>
+            ),
         },
         {
             header: 'Sub-Stage',
             accessorKey: 'subStage',
             enableSorting: true,
+            cell: ({ row }) => (
+                <Tag
+                    className={` ${
+                        row.original.subStage === 'Commission Report'
+                            ? 'bg-sky-100'
+                            : row.original.subStage === 'Call client for feedback'
+                              ? 'bg-red-100'
+                              : row.original.subStage === 'Review received'
+                                ? 'bg-yellow-100'
+                                : row.original.subStage === 'Call client for Recommendation'
+                                  ? 'bg-green-100'
+                                  : 'bg-purple-100'
+                    }`}
+                >
+                    {row.original.subStage}
+                </Tag>
+            ),
         },
         {
             header: 'Last Updated',

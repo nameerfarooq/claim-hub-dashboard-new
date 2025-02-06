@@ -236,7 +236,7 @@ const Leads = () => {
             header: 'PA Associated',
             accessorKey: 'pa',
             enableSorting: true,
-            cell: ({ row }) => <button onClick={() => handleView(row.original)} className='p-2'> {row.original.pa} </button>,
+            cell: ({ row }) => <button onClick={() => handleView(row.original)} className='w-full text-left py-1'> {row.original.pa} </button>,
         },
 
         {

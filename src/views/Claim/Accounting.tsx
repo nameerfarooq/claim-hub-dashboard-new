@@ -331,20 +331,58 @@ const Accounting = () => {
             accessorKey: 'city',
             enableSorting: true,
         },
-        {
-            header: 'Status',
-            accessorKey: 'status',
-            enableSorting: true,
-        },
+        // {
+        //     header: 'Status',
+        //     accessorKey: 'status',
+        //     enableSorting: true,
+        // },
         {
             header: 'Stage',
             accessorKey: 'stage',
             enableSorting: true,
+            cell: ({ row }) => (
+                <Tag
+                className={` ${
+                    row.original.stage === 'Sales'
+                        ? 'bg-sky-100'
+                        : row.original.stage === 'Processing'
+                          ? 'bg-red-100'
+                          : row.original.stage === 'Job'
+                            ? 'bg-yellow-100'
+                            : row.original.stage === 'Accounting'
+                              ? 'bg-green-100'
+                              :  'bg-purple-100'
+                }`}
+            >
+                {row.original.stage}
+            </Tag>
+            )
         },
         {
             header: 'Sub-Stage',
             accessorKey: 'subStage',
             enableSorting: true,
+            cell: ({ row }) => (
+                <Tag
+                className={` ${
+                    row.original.subStage === 'Calculate Internal Labor'
+                        ? 'bg-sky-100'
+                        : row.original.subStage === 'Calculate Material'
+                          ? 'bg-red-100'
+                          : row.original.subStage === 'Collect Deposit'
+                            ? 'bg-yellow-100'
+                            : row.original.subStage === 'Collect Balance'
+                              ? 'bg-green-100'
+                            : row.original.subStage === 'Invoice Received (30 days)'
+                              ? 'bg-pink-100'
+                            : row.original.subStage === 'Public Adjuster Compliance'
+                              ? 'bg-orange-100'
+                              :  'bg-purple-100'
+                }`}
+            >
+                {row.original.subStage}
+            </Tag>
+            )
         },
         {
             header: 'Last Updated',
