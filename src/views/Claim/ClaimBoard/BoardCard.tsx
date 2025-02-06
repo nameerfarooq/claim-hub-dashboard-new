@@ -30,8 +30,11 @@ const BoardCard: React.FC<BoardCardProps> = ({ task, index }) => {
                     className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow border border-primary-deep"
                     onClick={() => nav('/overview')}
                 >
-                    <div className="text-lg font-bold text-black">
-                        {task.name}
+                    <div>
+                        <p className="text-[16px] font-bold text-black">
+                            {task.id}
+                        </p>
+                        <p className='pt-1'>{task.name}</p>
                     </div>
                     {/* <div className="text-xs text-gray-500">
                         {task.description}

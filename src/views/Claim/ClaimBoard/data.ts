@@ -10,8 +10,8 @@ export const initialColumns: Columns = [
         title: 'Sales',
         tasks: [
             {
-                id: 'claim-c-1001',
-                name: 'Claim #C-1001 – Flooded Kitchen Assessment',
+                id: 'Claim #C-1001',
+                name: 'Flooded Kitchen Assessment',
                 description: 'Homeowner reported major leak under sink, awaiting adjuster.',
                 cover: '',
                 dueDate: '',
@@ -24,8 +24,8 @@ export const initialColumns: Columns = [
                 comments: [],
             },
             {
-                id: 'claim-c-1002',
-                name: 'Claim #C-1002 – Roof Damage from Storm',
+                id: 'Claim #C-1002',
+                name: 'Roof Damage from Storm',
                 description: 'Client accepted service, awaiting insurance claim number.',
                 cover: '',
                 dueDate: '',
@@ -43,8 +43,8 @@ export const initialColumns: Columns = [
         title: 'Processing',
         tasks: [
             {
-                id: 'claim-c-1003',
-                name: 'Claim #C-1003 – Fire Damage Inspection',
+                id: 'Claim #C-1003',
+                name: 'Fire Damage Inspection',
                 description: 'Fire department cleared site, initial cleanup scheduled.',
                 cover: '',
                 dueDate: '',
@@ -57,8 +57,8 @@ export const initialColumns: Columns = [
                 comments: [],
             },
             {
-                id: 'claim-c-1004',
-                name: 'Claim #C-1004 – Hurricane Impact Windows Replacement',
+                id: 'Claim #C-1004',
+                name: 'Hurricane Impact Windows Replacement',
                 description: 'Waiting for subcontractor availability for installation.',
                 cover: '',
                 dueDate: '',
@@ -78,8 +78,8 @@ export const initialColumns: Columns = [
         title: 'Job',
         tasks: [
             {
-                id: 'claim-c-1005',
-                name: 'Claim #C-1005 – Mold Remediation in Basement',
+                id: 'Claim #C-1005',
+                name: 'Mold Remediation in Basement',
                 description: 'Equipment ordered, team mobilizing in 2 days.',
                 cover: '',
                 dueDate: '',
@@ -89,8 +89,8 @@ export const initialColumns: Columns = [
                 comments: [],
             },
             {
-                id: 'claim-c-1006',
-                name: 'Claim #C-1006 – Water Extraction & Drying',
+                id: 'Claim #C-1006',
+                name: 'Water Extraction & Drying',
                 description: 'High-volume fans deployed, moisture levels being monitored.',
                 cover: '',
                 dueDate: '',
@@ -100,8 +100,8 @@ export const initialColumns: Columns = [
                 comments: [],
             },
             {
-                id: 'claim-c-1007',
-                name: 'Claim #C-1007 – Structural Compliance Check',
+                id: 'Claim #C-1007',
+                name: 'Structural Compliance Check',
                 description: 'Engineer review pending before reconstruction approval.',
                 cover: '',
                 dueDate: '',
@@ -117,8 +117,8 @@ export const initialColumns: Columns = [
         title: 'Accounting',
         tasks: [
             {
-                id: 'claim-c-1008',
-                name: 'Claim #C-1008 – Estimating Labor Costs',
+                id: 'Claim #C-1008',
+                name: 'Estimating Labor Costs',
                 description: 'Work-hour breakdown submitted for review.',
                 cover: '',
                 dueDate: '',
@@ -128,8 +128,8 @@ export const initialColumns: Columns = [
                 comments: [],
             },
             {
-                id: 'claim-c-1009',
-                name: 'Claim #C-1009 – Material Cost Approval',
+                id: 'Claim #C-1009',
+                name: 'Material Cost Approval',
                 description: 'Price comparisons completed, waiting on supplier confirmation.',
                 cover: '',
                 dueDate: '',
@@ -139,8 +139,8 @@ export const initialColumns: Columns = [
                 comments: [],
             },
             {
-                id: 'claim-c-1010',
-                name: 'Claim #C-1010 – Collecting Insurance Deposit',
+                id: 'Claim #C-1010',
+                name: 'Collecting Insurance Deposit',
                 description: 'Partial payment received, processing remaining balance.',
                 cover: '',
                 dueDate: '',
@@ -150,8 +150,8 @@ export const initialColumns: Columns = [
                 comments: [],
             },
             {
-                id: 'claim-c-1011',
-                name: 'Claim #C-1011 – Adjuster Assigned',
+                id: 'Claim #C-1011',
+                name: 'Adjuster Assigned',
                 description: 'Desk adjuster reviewing claim for final assessment.',
                 cover: '',
                 dueDate: '',
@@ -167,8 +167,8 @@ export const initialColumns: Columns = [
         title: 'Negotiation',
         tasks: [
             {
-                id: 'claim-c-1012',
-                name: 'Claim #C-1012 – Insurance Claim Dispute',
+                id: 'Claim #C-1012',
+                name: 'Insurance Claim Dispute',
                 description: 'Adjuster reduced payout, entering negotiation phase.',
                 cover: '',
                 dueDate: '',
@@ -178,8 +178,8 @@ export const initialColumns: Columns = [
                 comments: [],
             },
             {
-                id: 'claim-c-1013',
-                name: 'Claim #C-1013 – Payment Confirmation Pending',
+                id: 'Claim #C-1013',
+                name: 'Payment Confirmation Pending',
                 description: 'Insurance confirmed payment, expected transfer in 3 days.',
                 cover: '',
                 dueDate: '',
@@ -195,8 +195,8 @@ export const initialColumns: Columns = [
         title: 'Close Out',
         tasks: [
             {
-                id: 'claim-c-1014',
-                name: 'Claim #C-1014 – Commission Report Submission',
+                id: 'Claim #C-1014',
+                name: 'Commission Report Submission',
                 description: 'Final report being generated, expected submission tomorrow.',
                 cover: '',
                 dueDate: '',
@@ -206,8 +206,8 @@ export const initialColumns: Columns = [
                 comments: [],
             },
             {
-                id: 'claim-c-1015',
-                name: 'Claim #C-1015 – Client Review Request',
+                id: 'Claim #C-1015',
+                name: 'Client Review Request',
                 description: 'Customer satisfaction follow-up scheduled for Friday.',
                 cover: '',
                 dueDate: '',
@@ -217,8 +217,8 @@ export const initialColumns: Columns = [
                 comments: [],
             },
             {
-                id: 'claim-c-1016',
-                name: 'Claim #C-1016 – Testimonial Follow-Up',
+                id: 'Claim #C-1016',
+                name: 'Testimonial Follow-Up',
                 description: 'Client interested in leaving a Google review.',
                 cover: '',
                 dueDate: '',

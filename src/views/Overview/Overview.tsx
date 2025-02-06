@@ -25,10 +25,13 @@ import {
     TbClock,
     TbCoffee,
     TbFileDescription,
+    TbHourglassEmpty,
+    TbLoader,
     TbMessage,
     TbPencil,
     TbTag,
     TbUser,
+    TbX,
 } from 'react-icons/tb'
 import TabList from '@/components/ui/Tabs/TabList'
 import TabNav from '@/components/ui/Tabs/TabNav'
@@ -41,6 +44,8 @@ import PillIcon from '@/assets/icons/PillIcon'
 import mediaImg from '@/assets/Images/dashboard.png'
 import { useNavigate } from 'react-router-dom'
 import { useThemeStore } from '@/store/themeStore'
+import AvatarGroup from '@/components/ui/Avatar/AvatarGroup'
+import { s } from '@fullcalendar/core/internal-common'
 
 const Overview = () => {
     const tasks = [
@@ -193,7 +198,12 @@ const Overview = () => {
                     value: 'Qualification',
                 },
                 {
-                    icon: <TbCheck size={20} className="text-green-500" />,
+                    icon: (
+                        <TbHourglassEmpty
+                            size={20}
+                            className="text-yellow-600"
+                        />
+                    ),
                     value: 'Close',
                 },
             ],
@@ -207,11 +217,11 @@ const Overview = () => {
             date: '9-20-2023',
             tooltipData: [
                 {
-                    icon: <TbCheck size={20} className="text-green-500" />,
+                    icon: <TbLoader size={20} className="text-yellow-500" />,
                     value: 'Intake',
                 },
                 {
-                    icon: <TbCheck size={20} className="text-green-500" />,
+                    icon: <TbX size={20} className="text-yellow-600" />,
                     value: 'Scheduling',
                 },
             ],
@@ -225,15 +235,15 @@ const Overview = () => {
             date: '9-20-2023',
             tooltipData: [
                 {
-                    icon: <TbCheck size={20} className="text-green-500" />,
+                    icon: <TbX size={20} className="text-yellow-600" />,
                     value: 'Prep',
                 },
                 {
-                    icon: <TbCheck size={20} className="text-green-500" />,
+                    icon: <TbX size={20} className="text-yellow-600" />,
                     value: 'Perform',
                 },
                 {
-                    icon: <TbCheck size={20} className="text-green-500" />,
+                    icon: <TbX size={20} className="text-yellow-600" />,
                     value: 'Compliance',
                 },
             ],
@@ -247,43 +257,43 @@ const Overview = () => {
             date: '9-20-2023',
             tooltipData: [
                 {
-                    icon: <TbCheck size={20} className="text-green-500" />,
+                    icon: <TbX size={20} className="text-yellow-600" />,
                     value: 'Calculate Internal Labor',
                 },
                 {
-                    icon: <TbCheck size={20} className="text-green-500" />,
+                    icon: <TbX size={20} className="text-yellow-600" />,
                     value: 'Calculate Material',
                 },
                 {
-                    icon: <TbCheck size={20} className="text-green-500" />,
+                    icon: <TbX size={20} className="text-yellow-600" />,
                     value: 'Collect Deposit',
                 },
                 {
-                    icon: <TbCheck size={20} className="text-green-500" />,
+                    icon: <TbX size={20} className="text-yellow-600" />,
                     value: 'Collect Balance',
                 },
                 {
-                    icon: <TbCheck size={20} className="text-green-500" />,
+                    icon: <TbX size={20} className="text-yellow-600" />,
                     value: 'Invoice Received (30 days)',
                 },
                 {
-                    icon: <TbCheck size={20} className="text-green-500" />,
+                    icon: <TbX size={20} className="text-yellow-600" />,
                     value: 'Update sent (60 days)',
                 },
                 {
-                    icon: <TbCheck size={20} className="text-green-500" />,
+                    icon: <TbX size={20} className="text-yellow-600" />,
                     value: 'Coverage Requested',
                 },
                 {
-                    icon: <TbCheck size={20} className="text-green-500" />,
+                    icon: <TbX size={20} className="text-yellow-600" />,
                     value: 'Public Adjuster Compliance',
                 },
                 {
-                    icon: <TbCheck size={20} className="text-green-500" />,
+                    icon: <TbX size={20} className="text-yellow-600" />,
                     value: 'Inspection',
                 },
                 {
-                    icon: <TbCheck size={20} className="text-green-500" />,
+                    icon: <TbX size={20} className="text-yellow-600" />,
                     value: 'Desk Adjuster Assigned',
                 },
             ],
@@ -297,11 +307,11 @@ const Overview = () => {
             date: '9-20-2023',
             tooltipData: [
                 {
-                    icon: <TbCheck size={20} className="text-green-500" />,
+                    icon: <TbX size={20} className="text-yellow-600" />,
                     value: 'Mediation',
                 },
                 {
-                    icon: <TbCheck size={20} className="text-green-500" />,
+                    icon: <TbX size={20} className="text-yellow-600" />,
                     value: 'Payment Processed',
                 },
             ],
@@ -315,23 +325,23 @@ const Overview = () => {
             date: '9-20-2023',
             tooltipData: [
                 {
-                    icon: <TbCheck size={20} className="text-green-500" />,
+                    icon: <TbX size={20} className="text-yellow-600" />,
                     value: 'Commission Report',
                 },
                 {
-                    icon: <TbCheck size={20} className="text-green-500" />,
+                    icon: <TbX size={20} className="text-yellow-600" />,
                     value: 'Call client for feedback',
                 },
                 {
-                    icon: <TbCheck size={20} className="text-green-500" />,
+                    icon: <TbX size={20} className="text-yellow-600" />,
                     value: 'Review received',
                 },
                 {
-                    icon: <TbCheck size={20} className="text-green-500" />,
+                    icon: <TbX size={20} className="text-yellow-600" />,
                     value: 'Call client for Recommendation',
                 },
                 {
-                    icon: <TbCheck size={20} className="text-green-500" />,
+                    icon: <TbX size={20} className="text-yellow-600" />,
                     value: 'Recommendation received ',
                 },
             ],
@@ -376,10 +386,6 @@ const Overview = () => {
         { id: 4, title: 'Tornado' },
     ]
 
-    const [selectedStages, setSelectedStages] = useState<string[]>([
-        'Scheduling',
-    ])
-
     const [selectedDate, setSelectedDate] = useState(new Date())
 
     const formatDate = (date) => {
@@ -388,6 +394,7 @@ const Overview = () => {
             month: 'long',
         }).format(date)
     }
+    const [selectedStages, setSelectedStages] = useState<string[]>(['Sales'])
 
     const handleToggleStage = (stage: string) => {
         if (selectedStages.includes(stage)) {
@@ -398,9 +405,30 @@ const Overview = () => {
     }
 
     const stages = [
-        { id: 1, title: 'Scheduling' },
-        { id: 2, title: 'Assessment' },
+        { id: 1, title: 'Sales' },
+        { id: 2, title: 'Job' },
         { id: 3, title: 'Processing' },
+        { id: 3, title: 'Accounting' },
+        { id: 3, title: 'Negotiations' },
+        { id: 3, title: 'Close Out' },
+    ]
+
+    const [selectedSubStages, setSelectedSubStages] = useState<string[]>([
+        'Processing',
+    ])
+
+    const handleToggleSubStage = (stage: string) => {
+        if (selectedSubStages.includes(stage)) {
+            setSelectedSubStages(selectedSubStages.filter((t) => t !== stage)) // Remove if already selected
+        } else {
+            setSelectedSubStages([...selectedSubStages, stage]) // Add if not selected
+        }
+    }
+
+    const subStages = [
+        { id: 1, title: 'Processing' },
+        { id: 2, title: 'Scheduling' },
+        { id: 3, title: 'Intake' },
     ]
 
     const [currentTab, setCurrentTab] = useState('comments')
@@ -508,6 +536,45 @@ const Overview = () => {
         }) as T
     }
 
+    const [selectedUsers, setSelectedUsers] = useState([
+        {
+            id: '1',
+            name: 'John Doe',
+            media: user,
+        },
+    ])
+
+    const handleToggleUser = (user: any) => {
+        setSelectedUsers(
+            (prevSelectedUsers) =>
+                prevSelectedUsers.some((u) => u.id === user.id)
+                    ? prevSelectedUsers.filter((t) => t.id !== user.id) // Remove if already selected
+                    : [...prevSelectedUsers, user], // Add if not selected
+        )
+    }
+
+    const usersData = [
+        {
+            id: '1',
+            name: 'John Doe',
+            media: user,
+        },
+        {
+            id: '2',
+            name: 'Jane Smith',
+            media: user,
+        },
+        {
+            id: '3',
+            name: 'Will Smith',
+            media: user,
+        },
+        {
+            id: '4',
+            name: 'Rowan Atkinson',
+            media: user,
+        },
+    ]
     return (
         <main className="flex flex-col gap-[40px]">
             <section className="flex flex-row justify-between items-center">
@@ -528,14 +595,14 @@ const Overview = () => {
                     <Dropdown.Item>Settings</Dropdown.Item>
                 </Dropdown>
             </section>
-            <section className="grid grid-cols-4 justify-between">
-                <div className="flex flex-row items-center gap-4">
+            <section className="grid grid-cols-12 gap-2">
+                <div className="flex flex-row items-center col-span-3">
                     <p className="font-semibold text-black flex items-center gap-1">
                         {' '}
                         <span>
                             <TbTag size={20} />
                         </span>{' '}
-                        Label
+                        Type
                     </p>
                     {/* <div className="gap-1 flex flex-row">
                         <Tag className="bg-red-300 w-fit">Water</Tag>
@@ -577,7 +644,7 @@ const Overview = () => {
                         ))}
                     </Dropdown>
                 </div>
-                <div className="flex flex-row items-center gap-4">
+                <div className="flex flex-row items-center col-span-3">
                     <p className="font-semibold text-black flex items-center gap-1">
                         {' '}
                         <span>
@@ -594,7 +661,7 @@ const Overview = () => {
                                 {selectedStages.map((stage) => (
                                     <Tag
                                         key={stage}
-                                        className={`${stage === 'Assessment' ? 'bg-red-100' : stage === 'Scheduling ' ? 'bg-blue-100' : stage === 'Processing' ? 'bg-green-100' : 'bg-sky-100'}`}
+                                        className={`${stage === 'Sales' ? 'bg-red-100' : stage === 'Processing ' ? 'bg-blue-100' : stage === 'Job' ? 'bg-green-100' : stage === 'Accounting' ? 'bg-yellow-100' : stage === 'Close Out' ? 'bg-pink-100' : 'bg-sky-100'}`}
                                     >
                                         {stage}
                                     </Tag>
@@ -621,92 +688,115 @@ const Overview = () => {
                         ))}
                     </Dropdown>
                 </div>
-                <div className="flex flex-row items-center gap-4">
-                    <p className="font-semibold text-black flex items-center gap-1">
-                        {' '}
-                        <span>
-                            <TbUser size={20} />
-                        </span>{' '}
-                        Assigned to
-                    </p>
-                    <div className="gap-1 flex flex-row">
-                        <Avatar src={user} size={'sm'} />
-                        <Avatar src={user} size={'sm'} />
-                    </div>
-                </div>
-                <div className="flex flex-row items-center gap-4">
+                <div className="flex flex-row items-center col-span-3">
                     <p className="font-semibold text-black flex items-center gap-1 text-nowrap">
                         {' '}
                         <span>
-                            <TbClock size={20} />
+                            <TbCircle size={20} />
                         </span>{' '}
-                        Due date
+                        Sub-Stage
                     </p>
-                    <div className="flex items-center gap-1 px-3 rounded-xl hover:bg-gray-200 dark:hover:bg-gray-700 focus:bg-gray-200 dark:focus:bg-gray-700 cursor-pointer w-full min-h-[46px] relative">
-                        <span className="font-semibold">
-                            {formatDate(selectedDate)}
+                    <Dropdown
+                        className="w-full h-full"
+                        toggleClassName="hover:bg-gray-100 dark:hover:bg-gray-700 flex px-3 focus:bg-gray-100 cursor-pointer rounded-xl min-h-[46px] w-full"
+                        placement="bottom-start"
+                        renderTitle={
+                            <div className="inline-flex items-center gap-1">
+                                {selectedSubStages.map((stage) => (
+                                    <Tag
+                                        key={stage}
+                                        className={`${stage === 'Processing' ? 'bg-red-100' : stage === 'Intake' ? 'bg-blue-100' : stage === 'Scheduling' ? 'bg-green-100' : 'bg-sky-100'}`}
+                                    >
+                                        {stage}
+                                    </Tag>
+                                ))}
+                            </div>
+                        }
+                    >
+                        {subStages.map((stage) => (
+                            <Dropdown.Item
+                                key={stage.id}
+                                onClick={() =>
+                                    handleToggleSubStage(stage.title)
+                                }
+                                className="flex items-center justify-start w-full"
+                            >
+                                <div className="w-2/12">
+                                    {selectedSubStages.includes(
+                                        stage.title,
+                                    ) && (
+                                        <TbCheck
+                                            size={20}
+                                            className="text-green-500"
+                                        />
+                                    )}
+                                </div>
+                                {stage.title}
+                            </Dropdown.Item>
+                        ))}
+                    </Dropdown>
+                </div>
+                <div className="flex flex-row items-center col-span-3">
+                    <p className="font-semibold text-black flex items-center gap-1 w-full">
+                        <span>
+                            <TbUser size={20} />
                         </span>
-                        <DatePicker
-                            className="opacity-0 cursor-pointer absolute"
-                            value={selectedDate}
-                            inputtable={false}
-                            inputPrefix={null}
-                            inputSuffix={null}
-                            clearable={false}
-                            onChange={(date) => setSelectedDate(date)}
-                        />
-                    </div>
+                        Assigned to
+                    </p>
+                    <Dropdown
+                        className="w-full h-full"
+                        toggleClassName="hover:bg-gray-100 dark:hover:bg-gray-700 flex px-3 focus:bg-gray-100 cursor-pointer rounded-xl min-h-[46px] w-full"
+                        placement="bottom-start"
+                        renderTitle={
+                            <div className="inline-flex items-center gap-1">
+                                <AvatarGroup
+                                    chained
+                                    maxCount={3}
+                                    omittedAvatarProps={{ size: 'sm', className: 'bg-sky-500' }}
+                                >
+                                    {selectedUsers.map((user) => (
+                                        <Avatar
+                                            size={'sm'}
+                                            key={user.id}
+                                            src={user.media}
+                                        />
+                                    ))}
+                                </AvatarGroup>
+                            </div>
+                        }
+                    >
+                        {usersData.map((user) => (
+                            <Dropdown.Item
+                                key={user.id}
+                                onClick={() => handleToggleUser(user)} // Pass full user object
+                                className="flex items-center justify-start w-full"
+                            >
+                                <div className="w-1/12">
+                                    {selectedUsers.some(
+                                        (u) => u.id === user.id,
+                                    ) && (
+                                        <TbCheck
+                                            size={16}
+                                            className="text-green-500"
+                                        />
+                                    )}
+                                </div>
+                                <div className="flex flex-row items-center gap-1">
+                                    <div className="w-4/12">
+                                        <Avatar size={'sm'} src={user.media} />
+                                    </div>
+                                    <p className="text-xs w-fit">
+                                        {user.name}
+                                    </p>
+                                </div>
+                            </Dropdown.Item>
+                        ))}
+                    </Dropdown>
                 </div>
             </section>
             <section className="flex flex-col gap-[10px]">
-                <p className="text-xl font-bold">Milestones</p>
+                <p className="text-xl font-bold">Stages</p>
                 <div className="w-full py-[10px]">
-                    {/* <div className="w-full p-2 flex flex-row justify-between">
-                        {stepsData.map((step, index) => (
-                            <Tooltip
-                                title={
-                                    <div>
-                                        {step.tooltipData.map(
-                                            (data, dataIndex) => (
-                                                <div
-                                                    className="flex flex-row items-center"
-                                                    key={dataIndex}
-                                                >
-                                                    <span className={'mr-1'}>
-                                                        {data.icon}
-                                                    </span>
-                                                    <p className="text-white font-semibold">
-                                                        {data.value}
-                                                    </p>
-                                                </div>
-                                            ),
-                                        )}
-                                    </div>
-                                }
-                                className="!bg-[#262626]"
-                                key={index}
-                            >
-                                <div className="flex flex-col items-center justify-center relative">
-                                    <div
-                                        className={`h-10 w-10 rounded-full flex items-center justify-center border-2 border-primary ${step.completed ? 'bg-primary text-white' : 'bg-primary-subtle text-black'} `}
-                                    >
-                                        {step.icon}
-                                    </div>
-                                    <p className="text-center font-bold pt-1">
-                                        {step.title}
-                                    </p>
-                                    <p className="text-center text-[12px] pt-1">
-                                        {step.date}
-                                    </p>
-                                    {step.timeSpan && (
-                                        <p className="text-center font-bold absolute top-0 right-[-100%]">
-                                            {step.timeSpan}
-                                        </p>
-                                    )}
-                                </div>
-                            </Tooltip>
-                        ))}
-                    </div> */}
                     <div className="w-full p-2 flex items-center justify-between relative">
                         {stepsData.map((step, index) => (
                             <Tooltip

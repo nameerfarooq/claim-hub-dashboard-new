@@ -52,7 +52,7 @@ const ClaimList = () => {
             city: 'Miami',
             status: 'In Progress',
             stage: 'Sales',
-            subStage: 'Qualification',
+            subStage: 'Call Client for Feedback',
             lastUpdated: '2024-06-25',
             pa: 'Michael Torres',
         },
@@ -112,7 +112,7 @@ const ClaimList = () => {
             city: 'West Palm Beach',
             status: 'In Progress',
             stage: 'Job',
-            subStage: 'Prep',
+            subStage: 'Calculate Internal Labor',
             lastUpdated: '2024-06-29',
             pa: 'Sophia Rivera',
         },
@@ -402,13 +402,14 @@ const ClaimList = () => {
             header: 'Last Updated',
             accessorKey: 'lastUpdated',
             enableSorting: true,
+            cell: ({ row }) => <span className='text-nowrap text-gray-500'>{row.original.lastUpdated}</span>,
         },
 
         {
             header: 'Assigned PA',
             accessorKey: 'pa',
             enableSorting: true,
-            cell: ({ row }) => <button onClick={() => handleView(row.original)}>{row.original.pa}</button>,
+            cell: ({ row }) => <button className='text-nowrap' onClick={() => handleView(row.original)}>{row.original.pa}</button>,
         },
         {
             header: 'Actions',
