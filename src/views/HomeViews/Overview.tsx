@@ -184,6 +184,7 @@ const Overview = ({ data }: StatisticGroupsProps) => {
                     value={
                         <NumericFormat
                             displayType="text"
+                            prefix={'$'}
                             value={data?.totalOrder?.[selectedPeriod]?.value}
                             thousandSeparator={true}
                         />
@@ -202,10 +203,13 @@ const Overview = ({ data }: StatisticGroupsProps) => {
                 <StatisticCard
                     title="Avg. Job Revenue"
                     value={
-                        <AbbreviateNumber
+                        <NumericFormat
                             value={
                                 data?.totalImpression?.[selectedPeriod]?.value
                             }
+                            displayType="text"
+                            prefix={'$'}
+                            thousandSeparator={true}
                         />
                     }
                     growShrink={

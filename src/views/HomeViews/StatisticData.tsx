@@ -28,7 +28,7 @@ const StatisticData = {
             },
             comparePeriod: 'from last month',
             growShrink: 4.6,
-            value: 3123734,
+            value: 72567,
         },
         thisWeek: {
             chartData: {
