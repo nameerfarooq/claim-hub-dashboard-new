@@ -33,7 +33,7 @@ const TaskListTable = ({
                 return (
                     <div
                         key={`${t.id}row`}
-                        className="_34SS0"
+                        className="_34SS0 "
                         style={{ height: rowHeight }}
                     >
                         <div

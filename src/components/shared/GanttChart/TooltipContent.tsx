@@ -1,5 +1,5 @@
 import Progress from '@/components/ui/Progress'
-import { TbClock } from 'react-icons/tb'
+import { TbClock, TbUser } from 'react-icons/tb'
 import dayjs from 'dayjs'
 import type { Task } from 'gantt-task-react'
 
@@ -51,9 +51,12 @@ const TooltipContent = (props: TooltipContentProps) => {
                         />
                     )}
                 </div>
-                <p>
-                    <span></span>
-                </p>
+                <div className="flex items-center gap-1 text-gray-300">
+                    <TbUser className="text-lg" />
+                    <span className="text-white">
+                        Jhon Doe
+                    </span>
+                </div>
             </div>
         </div>
     )

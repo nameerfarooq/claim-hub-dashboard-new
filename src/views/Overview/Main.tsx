@@ -51,7 +51,7 @@ const Main = () => {
                 progressColor: 'rgb(125, 211, 252)',
                 progressSelectedColor: 'rgb(125, 211, 252)',
             },
-            type: 'task',
+            type: 'project',
         },
         {
             barVariant: 'research',
@@ -63,7 +63,7 @@ const Main = () => {
             id: '2102bc55-6b7a-4218-b5d8-ed9ecc5fc737',
             name: 'User research',
             progress: 85,
-            project: '96c97159-aaff-45d0-b874-74e4aa059b0f',
+            project: 'fd521fec-35bb-4c84-abc7-df590afc9076',
             start: new Date(
                 'Wed Jan 01 2025 00:00:00 GMT+0500 (Pakistan Standard Time)',
             ),
@@ -85,7 +85,7 @@ const Main = () => {
             id: 'ae9ebb76-5241-4c24-a921-b4b704a7edbd',
             name: 'Design system',
             progress: 35,
-            project: '96c97159-aaff-45d0-b874-74e4aa059b0f',
+            project: 'fd521fec-35bb-4c84-abc7-df590afc9076',
             start: new Date(
                 'Thu Jan 02 2025 00:00:00 GMT+0500 (Pakistan Standard Time)',
             ),
@@ -117,7 +117,7 @@ const Main = () => {
                 progressColor: 'rgb(255, 69, 0)',
                 progressSelectedColor: 'rgb(255, 69, 0)',
             },
-            type: 'task',
+            type: 'project',
         },
         {
             barVariant: 'development',
@@ -129,7 +129,7 @@ const Main = () => {
             id: '96c97159-aaff-45d0-b874-74e4aa059b0f',
             name: 'Development',
             progress: 40,
-            project: '96c97159-aaff-45d0-b874-74e4aa059b0f',
+            project: '4bd47b1d-bb51-40f4-843e-0e4dd632b5e7',
             start: new Date(
                 'Mon Jan 06 2025 00:00:00 GMT+0500 (Pakistan Standard Time)',
             ),
@@ -151,7 +151,7 @@ const Main = () => {
             id: '3209fd05-a73d-4947-84d9-cd0f6a286238',
             name: 'Infra architecture',
             progress: 20,
-            project: '96c97159-aaff-45d0-b874-74e4aa059b0f',
+            project: '4bd47b1d-bb51-40f4-843e-0e4dd632b5e7',
             start: new Date(
                 'Mon Jan 06 2025 00:00:00 GMT+0500 (Pakistan Standard Time)',
             ),
@@ -173,7 +173,7 @@ const Main = () => {
             id: '68b2a36f-74b3-432a-a7f5-ec66db501514',
             name: 'Develop core modules',
             progress: 10,
-            project: '96c97159-aaff-45d0-b874-74e4aa059b0f',
+            project: '4bd47b1d-bb51-40f4-843e-0e4dd632b5e7',
             start: new Date(
                 'Thu Jan 09 2025 00:00:00 GMT+0500 (Pakistan Standard Time)',
             ),
@@ -205,7 +205,7 @@ const Main = () => {
                 progressColor: 'rgb(125, 211, 252)',
                 progressSelectedColor: 'rgb(125, 211, 252)',
             },
-            type: 'task',
+            type: 'project',
         },
         {
             barVariant: 'api-integration',
@@ -217,7 +217,7 @@ const Main = () => {
             id: '8a49c48b-fde7-4567-b520-7f24d7e74631',
             name: 'API Integration',
             progress: 30,
-            project: '96c97159-aaff-45d0-b874-74e4aa059b0f',
+            project: '7d59bda8-c78e-4b7d-b66d-a5862f4c2644',
             start: new Date(
                 'Mon Jan 15 2025 00:00:00 GMT+0500 (Pakistan Standard Time)',
             ),
@@ -239,7 +239,7 @@ const Main = () => {
             id: '9b73c98c-42bb-4c64-9e91-91b39d1e7455',
             name: 'User Research & Analysis',
             progress: 50,
-            project: 'dcd1288f-d121-4c36-8e0f-8e423f7cf122',
+            project: '7d59bda8-c78e-4b7d-b66d-a5862f4c2644',
             start: new Date(
                 'Mon Jan 22 2025 00:00:00 GMT+0500 (Pakistan Standard Time)',
             ),

@@ -219,7 +219,7 @@ const Equipment = () => {
                             </button>
                         </Tooltip>
                         <Tooltip title="View" className="bg-white shadow-md">
-                            <button onClick={() => handleView(rowData)}>
+                            <button onClick={() => handleEdit(rowData)}>
                                 <ViewEyeIcon />
                             </button>
                         </Tooltip>
@@ -239,12 +239,8 @@ const Equipment = () => {
 
     const nav = useNavigate()
 
-    const handleView = (rowData: any) => {
-        nav('/contact-details', { state: { item: rowData } })
-    }
-
     const handleEdit = (rowData: any) => {
-        nav('/contact-edit', { state: { item: rowData } })
+        nav('/equipment-edit', { state: { item: rowData } })
     }
 
     const handleDelete = (rowData: any) => {

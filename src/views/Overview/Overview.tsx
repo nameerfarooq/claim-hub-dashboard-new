@@ -11,7 +11,7 @@ import {
     Tooltip,
     DatePicker,
 } from '@/components/ui'
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { IoMdAdd, IoMdMenu } from 'react-icons/io'
 import user from '@/assets/Images/user.png'
 import { LuMessageSquareText, LuPhone, LuSquareCheckBig } from 'react-icons/lu'
@@ -40,6 +40,7 @@ import { GoImage } from 'react-icons/go'
 import PillIcon from '@/assets/icons/PillIcon'
 import mediaImg from '@/assets/Images/dashboard.png'
 import { useNavigate } from 'react-router-dom'
+import { useThemeStore } from '@/store/themeStore'
 
 const Overview = () => {
     const tasks = [
@@ -454,6 +455,59 @@ const Overview = () => {
         },
     ]
 
+    const milestoneRefs = useRef<(HTMLDivElement | null)[]>([])
+    const [lineWidths, setLineWidths] = useState<number[]>([])
+
+    const sideNavCollapse = useThemeStore(
+        (state) => state.layout.sideNavCollapse,
+    )
+
+    useEffect(() => {
+        const updateWidths = () => {
+            if (!milestoneRefs.current.length) return
+
+            requestAnimationFrame(() => {
+                const newWidths = milestoneRefs.current.map((el, index) => {
+                    if (index === 0 || !el) return 0
+                    const prevEl = milestoneRefs.current[index - 1]
+                    if (!prevEl) return 0
+
+                    return (
+                        el.getBoundingClientRect().left -
+                        prevEl.getBoundingClientRect().left
+                    )
+                })
+
+                setLineWidths((prevWidths) =>
+                    JSON.stringify(prevWidths) !== JSON.stringify(newWidths)
+                        ? newWidths
+                        : prevWidths,
+                )
+            })
+        }
+
+        const debounceResize = debounce(updateWidths, 200)
+
+        setTimeout(updateWidths, 50)
+        window.addEventListener('resize', debounceResize)
+
+        return () => {
+            window.removeEventListener('resize', debounceResize)
+        }
+    }, [stepsData, sideNavCollapse])
+
+    // Optimized Debounce Function
+    function debounce<T extends (...args: any[]) => void>(
+        func: T,
+        delay: number,
+    ): T {
+        let timeout: NodeJS.Timeout
+        return ((...args: Parameters<T>) => {
+            clearTimeout(timeout)
+            timeout = setTimeout(() => func(...args), delay)
+        }) as T
+    }
+
     return (
         <main className="flex flex-col gap-[40px]">
             <section className="flex flex-row justify-between items-center">
@@ -607,16 +661,7 @@ const Overview = () => {
             <section className="flex flex-col gap-[10px]">
                 <p className="text-xl font-bold">Milestones</p>
                 <div className="w-full py-[10px]">
-                    {/* <Steps current={2}>
-                        {stepsData.map((step, index) => (
-                            <Steps.Item
-                                key={index}
-                                title={step.title}
-                                customIcon={step.icon}
-                            />
-                        ))}
-                    </Steps> */}
-                    <div className="w-full p-2 flex flex-row justify-between">
+                    {/* <div className="w-full p-2 flex flex-row justify-between">
                         {stepsData.map((step, index) => (
                             <Tooltip
                                 title={
@@ -655,6 +700,84 @@ const Overview = () => {
                                     </p>
                                     {step.timeSpan && (
                                         <p className="text-center font-bold absolute top-0 right-[-100%]">
+                                            {step.timeSpan}
+                                        </p>
+                                    )}
+                                </div>
+                            </Tooltip>
+                        ))}
+                    </div> */}
+                    <div className="w-full p-2 flex items-center justify-between relative">
+                        {stepsData.map((step, index) => (
+                            <Tooltip
+                                title={
+                                    <div>
+                                        {step.tooltipData.map(
+                                            (data, dataIndex) => (
+                                                <div
+                                                    className="flex flex-row items-center"
+                                                    key={dataIndex}
+                                                >
+                                                    <span className="mr-1">
+                                                        {data.icon}
+                                                    </span>
+                                                    <p className="text-white font-semibold">
+                                                        {data.value}
+                                                    </p>
+                                                </div>
+                                            ),
+                                        )}
+                                    </div>
+                                }
+                                className="!bg-[#262626]"
+                                key={index}
+                            >
+                                <div
+                                    ref={(el) =>
+                                        (milestoneRefs.current[index] = el)
+                                    }
+                                    className="relative flex flex-col items-center"
+                                >
+                                    {/* Connecting Line */}
+                                    {index !== 0 &&
+                                        lineWidths[index] !== undefined && (
+                                            <div
+                                                className="absolute top-[25%] right-[50%] h-[3px] z-[1]"
+                                                style={{
+                                                    width: `${lineWidths[index]}px`,
+                                                    backgroundColor:
+                                                        step.completed
+                                                            ? '#007bff'
+                                                            : '#ccc',
+                                                }}
+                                            ></div>
+                                        )}
+
+                                    {/* Milestone Circle */}
+                                    <div
+                                        className={`h-10 w-10 rounded-full flex items-center justify-center border-2 border-primary 
+                        ${step.completed ? 'bg-primary text-white' : 'bg-gray-100 text-black'} relative z-10`}
+                                    >
+                                        {step.icon}
+                                    </div>
+
+                                    {/* Milestone Details */}
+                                    <p className="text-center font-bold pt-1">
+                                        {step.title}
+                                    </p>
+                                    <p className="text-center text-[12px] pt-1">
+                                        {step.date}
+                                    </p>
+
+                                    {/* Time Span Positioned Between Milestones */}
+                                    {index !== 0 && step.timeSpan && (
+                                        <p
+                                            className="absolute top-[-25px] text-center font-bold"
+                                            style={{
+                                                right: `${lineWidths[index] / 2}px`,
+                                                transform: 'translateX(-50%)',
+                                            }}
+                                        >
                                             {step.timeSpan}
                                         </p>
                                     )}
@@ -1017,7 +1140,7 @@ const Overview = () => {
                     <div className="pt-[20px] h-[350px] overflow-auto custom-scrollbar">
                         <Timeline>
                             {activities.map((group) => (
-                                <React.Fragment key={group.id}>
+                                <div key={group.id}>
                                     <p className="font-bold">{group.date}</p>
 
                                     {group.activity.map((activity) => (
@@ -1042,7 +1165,7 @@ const Overview = () => {
                                             </div>
                                         </Timeline.Item>
                                     ))}
-                                </React.Fragment>
+                                </div>
                             ))}
                         </Timeline>
                     </div>
@@ -1119,7 +1242,10 @@ const Overview = () => {
                                 <div className="grid grid-cols-4 gap-4">
                                     {attachmentContent.map(
                                         (attachment, index) => (
-                                            <div className="p-3 h-fit rounded-lg bg-[#f5f5f5] w-fit shadow-lg">
+                                            <div
+                                                key={index}
+                                                className="p-3 h-fit rounded-lg bg-[#f5f5f5] w-fit shadow-lg"
+                                            >
                                                 <div className="min-h-[80px] min-w-[160px] border overflow-hidden rounded-lg">
                                                     <img
                                                         src={attachment.media}

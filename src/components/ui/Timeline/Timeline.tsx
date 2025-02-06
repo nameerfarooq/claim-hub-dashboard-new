@@ -10,9 +10,8 @@ export type TimelineProps = CommonProps & {
 
 const Timeline = (props: TimelineProps) => {
     const { children, className, ref } = props
-
-    const count = Children.count(children)
-
+    
+    const count = Children.count(children);
     const items = mapCloneElement(
         children,
         // eslint-disable-next-line @typescript-eslint/no-explicit-any

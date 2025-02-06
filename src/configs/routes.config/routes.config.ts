@@ -153,7 +153,19 @@ export const protectedRoutes: Routes = [
     {
         key: 'equipment',
         path: '/equipment',
-        component: lazy(() => import('@/views/Equipment')),
+        component: lazy(() => import('@/views/Equipment/Equipment')),
+        authority: [],
+    },
+    {
+        key: 'equipment-create',
+        path: '/equipment-create',
+        component: lazy(() => import('@/views/Equipment/ProductCreate')),
+        authority: [],
+    },
+    {
+        key: 'equipment-edit',
+        path: '/equipment-edit',
+        component: lazy(() => import('@/views/Equipment/ProductEdit')),
         authority: [],
     },
     {

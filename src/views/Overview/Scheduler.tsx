@@ -30,24 +30,23 @@ const colorsMap = {
 }
 
 const Scheduler = ({ data = [] }: ScheduleProps) => {
-    console.log('data', data)
-    const [activeValue, setActiveValue] = useState('month')
+    // const [activeValue, setActiveValue] = useState('month')
 
-    const segmentValues = ['month', 'week', 'day']
+    // const segmentValues = ['month', 'week', 'day']
 
-    const handleArrowClick = (direction: 'left' | 'right') => {
-        const currentIndex = segmentValues.indexOf(activeValue)
-        let newIndex
+    // const handleArrowClick = (direction: 'left' | 'right') => {
+    //     const currentIndex = segmentValues.indexOf(activeValue)
+    //     let newIndex
 
-        if (direction === 'right') {
-            newIndex = (currentIndex + 1) % segmentValues.length
-        } else {
-            newIndex =
-                (currentIndex - 1 + segmentValues.length) % segmentValues.length
-        }
+    //     if (direction === 'right') {
+    //         newIndex = (currentIndex + 1) % segmentValues.length
+    //     } else {
+    //         newIndex =
+    //             (currentIndex - 1 + segmentValues.length) % segmentValues.length
+    //     }
 
-        setActiveValue(segmentValues[newIndex])
-    }
+    //     setActiveValue(segmentValues[newIndex])
+    // }
 
     const [tasks, setTasks] = useState<ExtendedTask[]>(data)
 
@@ -239,60 +238,15 @@ const Scheduler = ({ data = [] }: ScheduleProps) => {
                             <Button
                                 className="ltr:mr-2 rtl:ml-2"
                                 variant="plain"
-                                onClick={onDialogClose}
+                                onClick={() => onDialogClose}
                             >
                                 Reset
                             </Button>
-                            <Button variant="solid" onClick={onDialogOk}>
+                            <Button variant="solid" onClick={() =>  onDialogOk}>
                                 Submit
                             </Button>
                         </div>
                     </Dialog>
-                    {/* <Segment
-                        className="bg-white border"
-                        value={activeValue}
-                        onChange={(value) => setActiveValue(value as string)}
-                    >
-                        <Segment.Item
-                            className=""
-                            activeClassName="text-white bg-primary-mild"
-                            inactiveClassName="bg-white"
-                            value="month"
-                        >
-                            Month
-                        </Segment.Item>
-                        <Segment.Item
-                            className=""
-                            activeClassName="text-white bg-primary-mild"
-                            inactiveClassName="bg-white"
-                            value="week"
-                        >
-                            Week
-                        </Segment.Item>
-                        <Segment.Item
-                            className=""
-                            activeClassName="text-white bg-primary-mild"
-                            inactiveClassName="bg-white"
-                            value="day"
-                        >
-                            Day
-                        </Segment.Item>
-                    </Segment> */}
-
-                    {/* <Segment>
-                        <Segment.Item
-                            value="left"
-                            onClick={() => handleArrowClick('left')}
-                        >
-                            <MdOutlineKeyboardArrowLeft />
-                        </Segment.Item>
-                        <Segment.Item
-                            value="right"
-                            onClick={() => handleArrowClick('right')}
-                        >
-                            <MdOutlineKeyboardArrowRight />
-                        </Segment.Item>
-                    </Segment> */}
                 </div>
             </div>
             <Card>
