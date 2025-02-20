@@ -90,13 +90,12 @@ const SignInForm = (props: SignInFormProps) => {
                     />
                 </FormItem>
                 <FormItem
-                    className='text-black'
                     label="Password"
                     invalid={Boolean(errors.password)}
                     errorMessage={errors.password?.message}
                     className={classNames(
-                        passwordHint && 'mb-0',
-                        errors.password?.message && 'mb-8',
+                        passwordHint && 'mb-0 text-black',
+                        errors.password?.message && 'mb-8 text-black',
                     )}
                 >
                     <Controller

@@ -129,7 +129,16 @@ const navigationConfig: NavigationTree[] = [
             },
         ],
     },
-
+    {
+        key: 'invoices',
+        path: '/invoices',
+        title: 'Invoice',
+        translateKey: 'nav.invoice',
+        icon: 'navIcon',
+        type: NAV_ITEM_TYPE_ITEM,
+        authority: [],
+        subMenu: [],
+    },
     {
         key: 'photos',
         path: '/photos',

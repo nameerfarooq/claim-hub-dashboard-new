@@ -332,28 +332,6 @@ const ClaimList = () => {
             accessorKey: 'city',
             enableSorting: true,
         },
-        // {
-        //     header: 'Status',
-        //     accessorKey: 'status',
-        //     enableSorting: true,
-        //     cell: ({ row }) => (
-        //         <Tag
-        //         className={` ${
-        //             row.original.status === 'In Progress'
-        //                 ? 'bg-sky-100'
-        //                 : row.original.status === 'Closed'
-        //                   ? 'bg-red-100'
-        //                   : row.original.status === 'Follow-Up'
-        //                     ? 'bg-red-100'
-        //                     : row.original.status === 'Hold'
-        //                       ? 'bg-green-100'
-        //                       :  'bg-sky-100'
-        //         }`}
-        //     >
-        //         {row.original.status}
-        //     </Tag>
-        //     )
-        // },
         {
             header: 'Stage',
             accessorKey: 'stage',
@@ -404,7 +382,6 @@ const ClaimList = () => {
             enableSorting: true,
             cell: ({ row }) => <span className='text-nowrap text-gray-500'>{row.original.lastUpdated}</span>,
         },
-
         {
             header: 'Assigned PA',
             accessorKey: 'pa',

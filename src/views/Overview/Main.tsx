@@ -21,6 +21,7 @@ import {
 } from 'react-icons/tb'
 import { GoImage } from 'react-icons/go'
 import { useThemeStore } from '@/store/themeStore'
+import Invoice from './Invoice'
 
 const Main = () => {
     const { setSideNavCollapse } = useThemeStore((state) => state);
@@ -327,6 +328,13 @@ const Main = () => {
                     </TabNav>
                     <TabNav
                         icon={<TbFileDescription />}
+                        className={`border border-primary-mild rounded-t-lg mx-1 ${currentTab === 'invoice' ? 'bg-primary-mild text-white' : 'bg-primary-subtle'}`}
+                        value="invoice"
+                    >
+                        Invoice
+                    </TabNav>
+                    <TabNav
+                        icon={<TbFileDescription />}
                         className={`border border-primary-mild rounded-t-lg mx-1 ${currentTab === 'documents' ? 'bg-primary-mild text-white' : 'bg-primary-subtle'}`}
                         value="documents"
                     >
@@ -358,6 +366,9 @@ const Main = () => {
                     </TabContent>
                     <TabContent value="estimate">
                         <Estimate />
+                    </TabContent>
+                    <TabContent value="invoice">
+                        <Invoice />
                     </TabContent>
                     <TabContent value="documents">
                         <Documents />

@@ -13,6 +13,8 @@ import ViewEyeIcon from '@/assets/icons/ViewEye'
 import { MdDeleteOutline } from 'react-icons/md'
 import Coin from '@/assets/icons/Coin'
 import { Link } from 'react-router-dom'
+import { AiOutlineFileAdd } from "react-icons/ai";
+
 
 type CheckBoxChangeEvent = ChangeEvent<HTMLInputElement>
 
@@ -39,56 +41,30 @@ function IndeterminateCheckbox({
     return <Checkbox ref={ref} onChange={(_, e) => onChange(e)} {...rest} />
 }
 
-const Estimate = () => {
+const Invoice = () => {
     const tableData = [
         {
-            id: '#95954',
-            date: '28-11-2024',
-            status: 'Draft',
-            total: '$4367.15',
+            number: 'Invoice #1028',
+            date: 'Feb 16, 2025',
+            subject: 'Tarp',
+            total: '$15668.22',
+            balance: '$15668.22',
         },
         {
-            id: '#95423',
-            date: '27-11-2024',
-            status: 'Approved',
-            total: '$7823.42',
+            number: 'Invoice #1029',
+            date: 'Feb 16, 2025',
+            subject: 'Dryout',
+            total: '$6365.45',
+            balance: '$6365.45',
         },
         {
-            id: '#95954',
-            date: '28-11-2024',
-            status: 'Draft',
-            total: '$4367.15',
+            number: 'Invoice #1067',
+            date: 'Feb 16, 2025',
+            subject: 'Mold Testing',
+            total: '$2500.00',
+            balance: '$2500.00',
         },
-        {
-            id: '#95423',
-            date: '27-11-2024',
-            status: 'Approved',
-            total: '$7823.42',
-        },
-        {
-            id: '#95954',
-            date: '28-11-2024',
-            status: 'Draft',
-            total: '$4367.15',
-        },
-        {
-            id: '#95423',
-            date: '27-11-2024',
-            status: 'Approved',
-            total: '$7823.42',
-        },
-        {
-            id: '#95954',
-            date: '28-11-2024',
-            status: 'Draft',
-            total: '$4367.15',
-        },
-        {
-            id: '#95423',
-            date: '27-11-2024',
-            status: 'Approved',
-            total: '$7823.42',
-        },
+       
     ]
 
     const columns = [
@@ -117,8 +93,8 @@ const Estimate = () => {
             ),
         },
         {
-            header: 'ID',
-            accessorKey: 'id',
+            header: 'Number',
+            accessorKey: 'number',
             enableSorting: true,
         },
         {
@@ -127,20 +103,37 @@ const Estimate = () => {
             enableSorting: true,
         },
         {
-            header: 'STATUS',
-            accessorKey: 'status',
+            header: 'Subject',
+            accessorKey: 'subject',
             enableSorting: true,
             cell: ({ row }) => (
                 <Tag
-                    className={`${row.original.status === 'Approved' ? 'bg-green-200' : 'bg-red-200'}`}
-                >
-                    {row.original.status}
+                className={` ${
+                    row.original.subject === 'Tarp'
+                        ? 'bg-sky-100'
+                        : row.original.subject === 'Dryout'
+                          ? 'bg-red-100'
+                          : row.original.subject === 'Fire'
+                            ? 'bg-red-100'
+                            : row.original.subject === 'Mold Testing'
+                              ? 'bg-green-100'
+                              : row.original.subject === 'Storm'
+                                ? 'bg-sky-100'
+                                : ''
+                }`}
+            >
+                    {row.original.subject}
                 </Tag>
             ),
         },
         {
             header: 'TOTAL',
             accessorKey: 'total',
+            enableSorting: true,
+        },
+        {
+            header: 'Balance',
+            accessorKey: 'balance',
             enableSorting: true,
         },
         {
@@ -157,9 +150,6 @@ const Estimate = () => {
                     </button>
                     <button onClick={() => handleDelete(row.original)}>
                         <MdDeleteOutline size={20} className="text-black" />
-                    </button>
-                    <button onClick={() => handleDelete(row.original)}>
-                        <Coin />
                     </button>
                 </div>
             ),
@@ -184,14 +174,14 @@ const Estimate = () => {
     return (
         <main className="bg-white p-4 rounded-2xl border border-gray-200 h-full flex flex-col gap-[20px]">
             <div className="flex flex-row justify-between">
-                <h1 className="text-2xl font-bold">Estimate Invoice List</h1>
+                <h1 className="text-2xl font-bold">Invoice List</h1>
                 <div className="flex flex-row gap-[10px]">
                     <Link
-                        to="/overview/create-estimate"
+                        to="/overview"
                         className="flex items-center gap-2 border border-primary rounded-xl p-4 font-bold text-white bg-primary hover:bg-primary-deep"
                     >
-                        <span>
-                            <AddUserIcon />
+                        <span className='text-white'>
+                            <AiOutlineFileAdd size={20} />
                         </span>
                         Create new
                     </Link>
@@ -204,4 +194,4 @@ const Estimate = () => {
     )
 }
 
-export default Estimate
+export default Invoice
