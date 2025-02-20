@@ -368,7 +368,7 @@ const Main = () => {
                         <Estimate />
                     </TabContent>
                     <TabContent value="invoice">
-                        <Invoice cards={undefined} />
+                        <Invoice cards={false} />
                     </TabContent>
                     <TabContent value="documents">
                         <Documents />
