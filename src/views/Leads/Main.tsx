@@ -326,7 +326,7 @@ const Leads = () => {
 
     return (
         <main className="bg-white p-4 rounded-2xl border border-gray-200 h-full flex flex-col gap-[20px]">
-            <div className="flex flex-row justify-between">
+            <div className="flex flex-row flex-wrap gap-[10px] justify-between">
                 <h1 className="text-2xl font-bold">Leads</h1>
                 <div className="flex flex-row gap-[10px]">
                     <CSVLink
@@ -340,7 +340,7 @@ const Leads = () => {
                     </CSVLink>
                     <button
                         onClick={() => nav('/leads-create')}
-                        className="flex items-center gap-2 border border-primary rounded-xl px-4 py-2 text-sm font-bold text-white bg-primary hover:bg-primary-deep"
+                        className="flex items-center gap-2 text-nowrap border border-primary rounded-xl px-4 py-2 text-sm font-bold text-white bg-primary hover:bg-primary-deep"
                     >
                         <span>
                             <AddUserIcon />

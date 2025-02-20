@@ -450,13 +450,13 @@ const Negotiations = () => {
 
     return (
         <main className="bg-white p-4 rounded-2xl border border-gray-200 h-full flex flex-col gap-[20px]">
-            <div className="flex flex-row justify-between">
+            <div className="flex flex-row flex-wrap gap-[10px] justify-between">
                 <h1 className="text-2xl font-bold">Claims : Negotiations</h1>
                 <div className="flex flex-row gap-[10px]">
                     <Button variant="default" icon={<TbCloudDownload />}>
                         Download
                     </Button>
-                    <button className="flex items-center gap-2 border border-primary rounded-xl px-4 py-2 text-sm font-bold text-white bg-primary hover:bg-primary-deep">
+                    <button className="text-nowrap flex items-center gap-2 border border-primary rounded-xl px-4 py-2 text-sm font-bold text-white bg-primary hover:bg-primary-deep">
                         <span>
                             <AddUserIcon />
                         </span>

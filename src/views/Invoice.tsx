@@ -36,7 +36,8 @@ function IndeterminateCheckbox({
     return <Checkbox ref={ref} onChange={(_, e) => onChange(e)} {...rest} />
 }
 
-const Invoice = () => {
+const Invoice = ({ cards = true }) => {
+
     const tableData = [
         {
             id: '1028',
@@ -46,7 +47,7 @@ const Invoice = () => {
             subject: 'Tarp',
             total: '$15,668.22',
             balance: '$15,668.22',
-            status: 'Past due'
+            status: 'Past due',
         },
         {
             id: '1029',
@@ -56,7 +57,7 @@ const Invoice = () => {
             subject: 'Dryout',
             total: '$6,365.45',
             balance: '$6,365.45',
-            status: 'Past due'
+            status: 'Past due',
         },
         {
             id: '1025',
@@ -66,7 +67,7 @@ const Invoice = () => {
             subject: 'Dryout',
             total: '$7,256.30',
             balance: '$7,256.30',
-            status: 'Past due'
+            status: 'Past due',
         },
         {
             id: '1026',
@@ -76,7 +77,7 @@ const Invoice = () => {
             subject: 'Tarp',
             total: '$15,733.87',
             balance: '$15,733.87',
-            status: 'Past due'
+            status: 'Past due',
         },
         {
             id: '1040',
@@ -86,7 +87,7 @@ const Invoice = () => {
             subject: 'Dryout',
             total: '$7,935.48',
             balance: '$7,935.48',
-            status: 'Past due'
+            status: 'Past due',
         },
         {
             id: '1032',
@@ -96,9 +97,9 @@ const Invoice = () => {
             subject: 'Dryout',
             total: '$9,375.24',
             balance: '$9,375.24',
-            status: 'Past due'
-        }
-    ];
+            status: 'Past due',
+        },
+    ]
 
     const columns = [
         {
@@ -139,7 +140,9 @@ const Invoice = () => {
             header: 'Due Date',
             accessorKey: 'date',
             enableSorting: true,
-            cell: ({ row }) => <div className='text-nowrap'>{row.original.date}</div>,
+            cell: ({ row }) => (
+                <div className="text-nowrap">{row.original.date}</div>
+            ),
         },
         {
             header: 'Subject',
@@ -247,143 +250,147 @@ const Invoice = () => {
                             New Invoice
                         </Button>
                     </div>
-                    <div className="flex flex-row flex-wrap gap-4 w-full rounded-[20px]">
-                        <Card
-                            bordered={true}
-                            className="!shadow-none min-w-[250px]"
-                            bodyClass="h-full flex flex-col items-start"
-                        >
-                            <div className="flex flex-row justify-between items-center">
-                                <div className="flex flex-col gap-[15px]">
-                                    <p className="text-lg font-bold">
-                                        Overview
-                                    </p>
-                                    <div className="flex flex-col gap-1 text-xs">
-                                        <div className="flex flex-row justify-between items-center">
-                                            <div className="flex flex-row gap-2 items-center">
-                                                <div className="rounded-full size-[12px] bg-red-500" />
-                                                <p className="text-gray-500">
-                                                    Past Due (0)
-                                                </p>
-                                            </div>
-                                            <p className="text-gray-500 ml-2">
-                                                $0
-                                            </p>
-                                        </div>
-                                        <div className="flex flex-row justify-between items-center">
-                                            <div className="flex flex-row gap-2 items-center">
-                                                <div className="rounded-full size-[12px] bg-yellow-500" />
-                                                <p className="text-gray-500">
-                                                    Sent but not due (0)
-                                                </p>
-                                            </div>
-                                            <p className="text-gray-500 ml-2">
-                                                $0
-                                            </p>
-                                        </div>
-                                        <div className="flex flex-row justify-between items-center">
-                                            <div className="flex flex-row gap-2 items-center">
-                                                <div className="rounded-full size-[12px] bg-slate-800" />
-                                                <p className="text-gray-500">
-                                                    Draft (0)
-                                                </p>
-                                            </div>
-                                            <p className="text-gray-500 ml-2">
-                                                $0
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </Card>
-                        <Card
-                            bordered={true}
-                            className="!shadow-none min-w-[250px]"
-                            bodyClass="h-full flex flex-col items-start"
-                        >
-                            <div className="flex flex-col justify-between items-center h-full">
-                                <div className="flex flex-col gap-[15px] h-full">
-                                    <div>
+                    {cards ? (
+                        <div className="flex flex-row flex-wrap gap-4 w-full rounded-[20px]">
+                            <Card
+                                bordered={true}
+                                className="!shadow-none min-w-[250px]"
+                                bodyClass="h-full flex flex-col items-start"
+                            >
+                                <div className="flex flex-row justify-between items-center">
+                                    <div className="flex flex-col gap-[15px]">
                                         <p className="text-lg font-bold">
-                                            Issued
+                                            Overview
                                         </p>
-                                        <p className="text-xs text-gray-500">
-                                            Past 30 days
-                                        </p>
-                                    </div>
-                                    <div className="flex flex-col gap-1 text-xs h-full">
-                                        <div className="h-full"></div>
-                                        <div className="mt-auto h-fit">
-                                            <p className="text-gray-500">
-                                                Data could not load
-                                            </p>
+                                        <div className="flex flex-col gap-1 text-xs">
+                                            <div className="flex flex-row justify-between items-center">
+                                                <div className="flex flex-row gap-2 items-center">
+                                                    <div className="rounded-full size-[12px] bg-red-500" />
+                                                    <p className="text-gray-500">
+                                                        Past Due (0)
+                                                    </p>
+                                                </div>
+                                                <p className="text-gray-500 ml-2">
+                                                    $0
+                                                </p>
+                                            </div>
+                                            <div className="flex flex-row justify-between items-center">
+                                                <div className="flex flex-row gap-2 items-center">
+                                                    <div className="rounded-full size-[12px] bg-yellow-500" />
+                                                    <p className="text-gray-500">
+                                                        Sent but not due (0)
+                                                    </p>
+                                                </div>
+                                                <p className="text-gray-500 ml-2">
+                                                    $0
+                                                </p>
+                                            </div>
+                                            <div className="flex flex-row justify-between items-center">
+                                                <div className="flex flex-row gap-2 items-center">
+                                                    <div className="rounded-full size-[12px] bg-slate-800" />
+                                                    <p className="text-gray-500">
+                                                        Draft (0)
+                                                    </p>
+                                                </div>
+                                                <p className="text-gray-500 ml-2">
+                                                    $0
+                                                </p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </Card>
-                        <Card
-                            bordered={true}
-                            className="!shadow-none min-w-[250px]"
-                            bodyClass="h-full flex flex-col items-start"
-                        >
-                            <div className="flex flex-col justify-between items-center h-full">
-                                <div className="flex flex-col gap-[15px] h-full">
-                                    <div>
-                                        <p className="text-lg font-bold">
-                                            Average Invoice
-                                        </p>
-                                        <p className="text-xs text-gray-500">
-                                            Past 30 days
-                                        </p>
-                                    </div>
-                                    <div className="flex flex-col gap-1 text-xs h-full">
-                                        <div className="h-full"></div>
-                                        <div className="mt-auto h-fit">
-                                            <p className="text-gray-500">
-                                                Data could not load
+                            </Card>
+                            <Card
+                                bordered={true}
+                                className="!shadow-none min-w-[250px]"
+                                bodyClass="h-full flex flex-col items-start"
+                            >
+                                <div className="flex flex-col justify-between items-center h-full">
+                                    <div className="flex flex-col gap-[15px] h-full">
+                                        <div>
+                                            <p className="text-lg font-bold">
+                                                Issued
                                             </p>
+                                            <p className="text-xs text-gray-500">
+                                                Past 30 days
+                                            </p>
+                                        </div>
+                                        <div className="flex flex-col gap-1 text-xs h-full">
+                                            <div className="h-full"></div>
+                                            <div className="mt-auto h-fit">
+                                                <p className="text-gray-500">
+                                                    Data could not load
+                                                </p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </Card>
-                        <Card
-                            bordered={true}
-                            className="!shadow-none min-w-[250px]"
-                            bodyClass="h-full flex flex-col items-start"
-                        >
-                            <div className="flex flex-col justify-between items-center h-full">
-                                <div className="flex flex-col gap-[15px] h-full">
-                                    <div>
-                                        <p className="text-lg font-bold flex flex-row items-center gap-1">
-                                            Avg time to paid{' '}
-                                            <Tooltip
-                                                title="Tooltip text"
-                                                className="bg-white border"
-                                            >
-                                                {' '}
-                                                <p className="text-xs rounded-full border border-black size-[18px] text-center">
-                                                    ?
-                                                </p>{' '}
-                                            </Tooltip>{' '}
-                                        </p>
-                                        <p className="text-xs text-gray-500">
-                                            Past 30 days
-                                        </p>
-                                    </div>
-                                    <div className="flex flex-col gap-1 text-xs h-full">
-                                        <div className="h-full"></div>
-                                        <div className="mt-auto h-fit">
-                                            <p className="text-gray-500">
-                                                Data could not load
+                            </Card>
+                            <Card
+                                bordered={true}
+                                className="!shadow-none min-w-[250px]"
+                                bodyClass="h-full flex flex-col items-start"
+                            >
+                                <div className="flex flex-col justify-between items-center h-full">
+                                    <div className="flex flex-col gap-[15px] h-full">
+                                        <div>
+                                            <p className="text-lg font-bold">
+                                                Average Invoice
                                             </p>
+                                            <p className="text-xs text-gray-500">
+                                                Past 30 days
+                                            </p>
+                                        </div>
+                                        <div className="flex flex-col gap-1 text-xs h-full">
+                                            <div className="h-full"></div>
+                                            <div className="mt-auto h-fit">
+                                                <p className="text-gray-500">
+                                                    Data could not load
+                                                </p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </Card>
-                    </div>
+                            </Card>
+                            <Card
+                                bordered={true}
+                                className="!shadow-none min-w-[250px]"
+                                bodyClass="h-full flex flex-col items-start"
+                            >
+                                <div className="flex flex-col justify-between items-center h-full">
+                                    <div className="flex flex-col gap-[15px] h-full">
+                                        <div>
+                                            <p className="text-lg font-bold flex flex-row items-center gap-1">
+                                                Avg time to paid{' '}
+                                                <Tooltip
+                                                    title="Tooltip text"
+                                                    className="bg-white border"
+                                                >
+                                                    {' '}
+                                                    <p className="text-xs rounded-full border border-black size-[18px] text-center">
+                                                        ?
+                                                    </p>{' '}
+                                                </Tooltip>{' '}
+                                            </p>
+                                            <p className="text-xs text-gray-500">
+                                                Past 30 days
+                                            </p>
+                                        </div>
+                                        <div className="flex flex-col gap-1 text-xs h-full">
+                                            <div className="h-full"></div>
+                                            <div className="mt-auto h-fit">
+                                                <p className="text-gray-500">
+                                                    Data could not load
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </Card>
+                        </div>
+                    ) : (
+                        ''
+                    )}
                 </div>
             </section>
             <section className="flex flex-col gap-[15px]">

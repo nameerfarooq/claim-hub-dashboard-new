@@ -577,7 +577,7 @@ const Overview = () => {
     ]
     return (
         <main className="flex flex-col gap-[40px]">
-            <section className="flex flex-row justify-between items-center">
+            <section className="flex flex-row flex-wrap justify-between items-center">
                 <div className="flex flex-col gap-[10px]">
                     <Tag className="bg-red-300 w-fit">Dryout and Tarp</Tag>
                     <p className="text-2xl font-bold">Samuel Andrew Hall</p>
@@ -595,8 +595,8 @@ const Overview = () => {
                     <Dropdown.Item>Settings</Dropdown.Item>
                 </Dropdown>
             </section>
-            <section className="grid grid-cols-12 gap-2">
-                <div className="flex flex-row items-center col-span-3">
+            <section className="flex flex-row justify-between flex-wrap gap-2">
+                <div className="flex flex-row items-center flex-wrap">
                     <p className="font-semibold text-black flex items-center gap-1">
                         {' '}
                         <span>
@@ -644,7 +644,7 @@ const Overview = () => {
                         ))}
                     </Dropdown>
                 </div>
-                <div className="flex flex-row items-center col-span-3">
+                <div className="flex flex-row items-center flex-wrap">
                     <p className="font-semibold text-black flex items-center gap-1">
                         {' '}
                         <span>
@@ -688,7 +688,7 @@ const Overview = () => {
                         ))}
                     </Dropdown>
                 </div>
-                <div className="flex flex-row items-center col-span-3">
+                <div className="flex flex-row items-center flex-wrap">
                     <p className="font-semibold text-black flex items-center gap-1 text-nowrap">
                         {' '}
                         <span>
@@ -736,7 +736,7 @@ const Overview = () => {
                         ))}
                     </Dropdown>
                 </div>
-                <div className="flex flex-row items-center col-span-3">
+                <div className="flex flex-row items-center flex-wrap">
                     <p className="font-semibold text-black flex items-center gap-1 w-full">
                         <span>
                             <TbUser size={20} />
@@ -794,97 +794,10 @@ const Overview = () => {
                     </Dropdown>
                 </div>
             </section>
-            <section className="flex flex-col gap-[10px]">
-                <p className="text-xl font-bold">Stages</p>
-                <div className="w-full py-[10px]">
-                    <div className="w-full p-2 flex items-center justify-between relative">
-                        {stepsData.map((step, index) => (
-                            <Tooltip
-                                title={
-                                    <div>
-                                        {step.tooltipData.map(
-                                            (data, dataIndex) => (
-                                                <div
-                                                    className="flex flex-row items-center"
-                                                    key={dataIndex}
-                                                >
-                                                    <span className="mr-1">
-                                                        {data.icon}
-                                                    </span>
-                                                    <p className="text-white font-semibold">
-                                                        {data.value}
-                                                    </p>
-                                                </div>
-                                            ),
-                                        )}
-                                    </div>
-                                }
-                                className="!bg-[#262626]"
-                                key={index}
-                            >
-                                <div
-                                    ref={(el) =>
-                                        (milestoneRefs.current[index] = el)
-                                    }
-                                    className="relative flex flex-col items-center"
-                                >
-                                    {/* Connecting Line */}
-                                    {index !== 0 &&
-                                        lineWidths[index] !== undefined && (
-                                            <div
-                                                className="absolute top-[25%] right-[50%] h-[3px] z-[1]"
-                                                style={{
-                                                    width: `${lineWidths[index]}px`,
-                                                    backgroundColor:
-                                                        step.completed
-                                                            ? '#007bff'
-                                                            : '#ccc',
-                                                }}
-                                            ></div>
-                                        )}
-
-                                    {/* Milestone Circle */}
-                                    <div
-                                        className={`h-10 w-10 rounded-full flex items-center justify-center border-2 border-primary 
-                        ${step.completed ? 'bg-primary text-white' : 'bg-gray-100 text-black'} relative z-10`}
-                                    >
-                                        {step.icon}
-                                    </div>
-
-                                    {/* Milestone Details */}
-                                    <p className="text-center font-bold pt-1">
-                                        {step.title}
-                                    </p>
-                                    <p className="text-center text-[12px] pt-1">
-                                        {step.date}
-                                    </p>
-
-                                    {/* Time Span Positioned Between Milestones */}
-                                    {index !== 0 && step.timeSpan && (
-                                        <p
-                                            className="absolute top-[-25px] text-center font-bold"
-                                            style={{
-                                                right: `${lineWidths[index] / 2}px`,
-                                                transform: 'translateX(-50%)',
-                                            }}
-                                        >
-                                            {step.timeSpan}
-                                        </p>
-                                    )}
-                                </div>
-                            </Tooltip>
-                        ))}
-                    </div>
-                </div>
-                <div className="w-full mx-auto flex flex-row items-center justify-center mt-2">
-                    <button className="py-2 px-3 rounded-lg text-lg font-bold bg-primary-mild text-white">
-                        Starting Intake Process
-                    </button>
-                </div>
-            </section>
-            <section className="flex flex-col gap-[10px]">
+            
+            <section className="flex flex-col flex-wrap gap-[10px]">
                 <p className="text-xl font-bold">Overview</p>
-                <div className="grid grid-cols-5 gap-2">
+                <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-2">
                     <Card className="bg-white border border-dashed border-primary-mild">
                         <div className="flex flex-col lg:flex-row-reverse items-center justify-between gap-5">
                             <Avatar
@@ -944,7 +857,7 @@ const Overview = () => {
                     </Card>
                 </div>
             </section>
-            <section className="grid grid-cols-2 xl:grid-cols-4 gap-2">
+            <section className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-2">
                 <Card className="bg-white border border-primary-mild">
                     <div className="flex flex-row items-center justify-between">
                         <p className="font-bold text-xl">Client</p>
@@ -1116,7 +1029,7 @@ const Overview = () => {
                     </div>
                 </Card>
             </section>
-            <section className="grid grid-cols-2 xl:grid-cols-3 gap-1">
+            <section className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-1">
                 <Card className="bg-white border border-primary-mild">
                     <div className="flex flex-row items-center justify-between">
                         <p className="text-xl font-bold text-wrap">

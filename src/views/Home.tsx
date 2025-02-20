@@ -257,7 +257,7 @@ const Home = () => {
                                     All Claims
                                 </Button>
                             </div>
-                            <div className="grid grid-cols-3 gap-4 w-full bg-gray-100 p-[8px] rounded-[20px]">
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full bg-gray-100 p-[8px] rounded-[20px]">
                                 <Card bordered={false} className="!shadow-none">
                                     <div className="flex flex-row justify-between items-center relative">
                                         <div className="flex flex-col gap-[10px]">

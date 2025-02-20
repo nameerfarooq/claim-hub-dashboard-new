@@ -78,10 +78,11 @@ const Chart = (props: ChartProps) => {
                 lengend.style.left = '0'
             }
             if (isMobile) {
-                lengend.style.position = 'relative'
-                lengend.style.top = '0'
-                lengend.style.justifyContent = 'start'
-                lengend.style.padding = '0'
+                // lengend.style.position = 'hidden'
+                // lengend.style.top = '0'
+                // lengend.style.justifyContent = 'start'
+                // lengend.style.padding = '0'
+                
             }
         }
     }, [direction, isMobile])
