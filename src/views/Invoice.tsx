@@ -9,6 +9,7 @@ import EditPencilIcon from '@/assets/icons/EditPencil'
 import ViewEyeIcon from '@/assets/icons/ViewEye'
 import { MdDeleteOutline } from 'react-icons/md'
 import { useNavigate } from 'react-router-dom'
+import CustomFileterTable from '@/components/custom/CustomFilterTable'
 
 type CheckBoxChangeEvent = ChangeEvent<HTMLInputElement>
 
@@ -388,7 +389,7 @@ const Invoice = () => {
             <section className="flex flex-col gap-[15px]">
                 <p className="text-lg font-bold">All invoices</p>
                 <div>
-                    <RowSelection
+                    <CustomFileterTable
                         filter={true}
                         data={tableData}
                         columns={columns}

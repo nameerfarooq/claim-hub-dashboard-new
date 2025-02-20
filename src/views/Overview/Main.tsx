@@ -12,6 +12,7 @@ import Photos from './Photos'
 import Estimate from './EstimateViews/Estimate'
 import Documents from './Documents'
 import Orders from './OrderViews/Orders'
+import Invoice from '../Invoice'
 import {
     TbCalendar,
     TbFile,
@@ -21,7 +22,6 @@ import {
 } from 'react-icons/tb'
 import { GoImage } from 'react-icons/go'
 import { useThemeStore } from '@/store/themeStore'
-import Invoice from './Invoice'
 
 const Main = () => {
     const { setSideNavCollapse } = useThemeStore((state) => state);
